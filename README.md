@@ -1,24 +1,44 @@
-# README
+# サービス概要
+クックパッドのレシピから材料費を計算して表示するサービス。  
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# メインのターゲットユーザー
+・節約を意識した主婦  
+・学生や低所得者など、節約せざるを得ない人  
 
-Things you may want to cover:
+# ユーザーが抱える課題
+レシピから材料費を計算できるサービスがなく、数値として節約に有効なレシピや、買った方が安いメニューが分かりづらい。  
+エクセル等で計算すると、非常に手間がかかってしまう。  
 
-* Ruby version
+# 解決方法
+データベースに登録してある材料費と、クックパッドのレシピから材料費を割り出す。  
 
-* System dependencies
+# 実装予定の機能
+## 一般ユーザー
+・クックパッドのURLを入力することで材料費がわかる（BOT・Twitterシェア用に自動で保存）  
+・問い合わせ機能  
+・Twitterシェア機能  
 
-* Configuration
+## 管理ユーザー
+・材料費のCRUD  
+・登録されたメニューごとの材料費のCRUD  
 
-* Database creation
+## その他
+・TwitterのBOT(計算情報を保存ごとに投稿)  
 
-* Database initialization
+# なぜこのサービスを作りたいのか
+・自分の両親が食費のことでよく揉めていたり、周りでも食費を削りたいと思っても、なかなか食費が減らないという人がいた。  
+　月の食費だけではなく、メニューごとにどれくらい材料費がかかっているのか数値でわかれば、効率よく節約することが出来るのではないかと考えた。  
+・買った方が安いメニューが分かれば、お金と手間の節約が出来て一石二鳥になる。  
 
-* How to run the test suite
+# スケジュール
+企画~技術調査： 2/24〆切  
+README~ER図作成： 2/28〆切  
+メイン機能実装： 4/5〆切  
+β版をRUNTEQ内リリース(MVP): 4/10〆切  
+本番リリース： 4/16〆切  
 
-* Services (job queues, cache servers, search engines, etc.)
+# 画面遷移図
+[Figma](https://www.figma.com/file/DEMJHv3GKw0BrKaWAQhvK5/%E3%82%B9%E3%83%9E%E3%83%9B?node-id=2%3A10)
 
-* Deployment instructions
-
-* ...
+# ER図
+[ER図](https://drive.google.com/file/d/1lAK6ljTnjMDGHtjC3LTSOo4y0dNwsXX4/view?usp=sharing)
