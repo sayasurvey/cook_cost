@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_02_063952) do
+ActiveRecord::Schema.define(version: 2022_03_02_141030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ingredient_synonyms", force: :cascade do |t|
+    t.bigint "ingredient_id", null: false
+    t.bigint "synonym_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id"], name: "index_ingredient_synonyms_on_ingredient_id"
+    t.index ["synonym_id"], name: "index_ingredient_synonyms_on_synonym_id"
+  end
 
   create_table "ingredient_units", force: :cascade do |t|
     t.bigint "ingredient_id", null: false
@@ -52,12 +61,20 @@ ActiveRecord::Schema.define(version: 2022_03_02_063952) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "synonyms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "units", force: :cascade do |t|
     t.string "unit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "ingredient_synonyms", "ingredients"
+  add_foreign_key "ingredient_synonyms", "synonyms"
   add_foreign_key "ingredient_units", "ingredients"
   add_foreign_key "ingredient_units", "units"
   add_foreign_key "prices", "ingredients"

@@ -24,3 +24,13 @@ csv.each do |price|
     s.one_base_unit_price = price[5]
   end
 end
+
+csv = CSV.read("#{data_dir}IngredientSynonyms.csv", headers: true)
+
+csv.each do |ingredient_synonyms|
+  IngredientSynonym.seed(:id) do |s|
+    s.id  = ingredient_synonyms[0]
+    s.ingredient = Ingredient.find_by(name: ingredient_synonyms[1])
+    s.synonym = Synonym.find_by(name: ingredient_synonyms[2])
+  end
+end
