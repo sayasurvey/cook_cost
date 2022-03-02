@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ingredient: one
+  purchase_price: 1
+  quantity: 1
+  unit: one
+  one_base_unit_price: 1
+
+two:
+  ingredient: two
+  purchase_price: 1
+  quantity: 1
+  unit: two
+  one_base_unit_price: 1
