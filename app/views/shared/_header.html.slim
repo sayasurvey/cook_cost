@@ -3,5 +3,5 @@ header
     h1.title-text.text-center
       | CookCost
       = form_with model:@recipe, local: true do |f|
-        = f.text_field :cookpad_url, class: 'text-gray'
+        = f.text_field :recipe_url, class: 'text-gray'
         = f.submit class: 'text-gray'

@@ -19,11 +19,11 @@ module RakutenRecipeScrapes
     originator = doc.xpath("#{html_path}div[3]/div/div[2]/div[2]/a").text.strip
     doc.xpath("#{html_path}div[3]/section/ul").css('li').map do |node|
       synonym = node.css('.recipe_material__item_name').text.strip
-      ingredient = Ingredient.joins(ingredient_synonyms: :synonym).find_by(synonym: {name: synonym}).name
+      ingredient = Ingredient.joins(:synonyms).find_by(synonyms: { name: synonym } ).name
       qutntitiy_unit = full_to_half(node.css('.recipe_material__item_serving').text.strip)
       quantity = qutntitiy_unit.gsub(/[^[0-9.]]/, "").to_f
       unit = qutntitiy_unit.delete("0-9.")
-      if Unit.find_by(unit: unit).id == Ingredient.find_by(name: ingredient).base_unit
+      if unit == Ingredient.find_by(name: ingredient).base_unit
         amount = quantity
       else
         ratio = IngredientUnit.joins(:ingredient, :unit).find_by(ingredient: { name: ingredient }, unit: { unit: unit }).ratio.to_i

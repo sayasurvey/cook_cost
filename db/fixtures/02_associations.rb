@@ -25,12 +25,12 @@ csv.each do |price|
   end
 end
 
-csv = CSV.read("#{data_dir}IngredientSynonyms.csv", headers: true)
+csv = CSV.read("#{data_dir}Synonyms.csv", headers: true)
 
-csv.each do |ingredient_synonyms|
-  IngredientSynonym.seed(:id) do |s|
-    s.id  = ingredient_synonyms[0]
-    s.ingredient = Ingredient.find_by(name: ingredient_synonyms[1])
-    s.synonym = Synonym.find_by(name: ingredient_synonyms[2])
+csv.each do |synonym|
+  Synonym.seed(:id) do |s|
+    s.id  = synonym[0]
+    s.ingredient = Ingredient.find_by(name: synonym[1])
+    s.name = synonym[2]
   end
 end

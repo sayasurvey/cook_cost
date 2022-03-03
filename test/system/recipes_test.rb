@@ -14,7 +14,7 @@ class RecipesTest < ApplicationSystemTestCase
     visit recipes_url
     click_on "New Recipe"
 
-    fill_in "Cookpad url", with: @recipe.cookpad_url
+    fill_in "recipe url", with: @recipe.recipe_url
     fill_in "Cuisine name", with: @recipe.cuisine_name
     fill_in "Originator", with: @recipe.originator
     click_on "Create Recipe"
@@ -27,7 +27,7 @@ class RecipesTest < ApplicationSystemTestCase
     visit recipes_url
     click_on "Edit", match: :first
 
-    fill_in "Cookpad url", with: @recipe.cookpad_url
+    fill_in "recipe url", with: @recipe.recipe_url
     fill_in "Cuisine name", with: @recipe.cuisine_name
     fill_in "Originator", with: @recipe.originator
     click_on "Update Recipe"

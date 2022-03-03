@@ -1,8 +1,8 @@
 class Ingredient < ApplicationRecord
   has_many :ingredient_units
   has_many :prices
-  has_many :ingredient_synonyms
+  has_many :synonyms
 
   validates :name, presence: true
-  validates :base_unit, numericality: { in: 1..2 }, presence: true
+  validates :base_unit, presence: true
 end

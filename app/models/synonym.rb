@@ -1,5 +1,6 @@
 class Synonym < ApplicationRecord
-  has_one :ingredient_synonym
+  belongs_to :ingredient
 
   validates :name, presence: true
+  validates :ingredient, presence: true
 end

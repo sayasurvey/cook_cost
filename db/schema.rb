@@ -10,33 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_02_173017) do
+ActiveRecord::Schema.define(version: 2022_03_03_122325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "food_costs", force: :cascade do |t|
-    t.bigint "price_id", null: false
-    t.float "amount"
-    t.float "cost"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["price_id"], name: "index_food_costs_on_price_id"
-  end
-
-  create_table "ingredient_synonyms", force: :cascade do |t|
-    t.bigint "ingredient_id", null: false
-    t.bigint "synonym_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["ingredient_id"], name: "index_ingredient_synonyms_on_ingredient_id"
-    t.index ["synonym_id"], name: "index_ingredient_synonyms_on_synonym_id"
-  end
-
   create_table "ingredient_units", force: :cascade do |t|
     t.bigint "ingredient_id", null: false
     t.bigint "unit_id", null: false
-    t.integer "ratio"
+    t.float "ratio", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["ingredient_id"], name: "index_ingredient_units_on_ingredient_id"
@@ -45,15 +27,15 @@ ActiveRecord::Schema.define(version: 2022_03_02_173017) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
-    t.integer "base_unit"
+    t.string "base_unit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "prices", force: :cascade do |t|
     t.bigint "ingredient_id", null: false
-    t.integer "purchase_price"
-    t.integer "quantity"
+    t.integer "purchase_price", null: false
+    t.integer "quantity", null: false
     t.bigint "unit_id", null: false
     t.float "one_base_unit_price"
     t.datetime "created_at", precision: 6, null: false
@@ -63,30 +45,30 @@ ActiveRecord::Schema.define(version: 2022_03_02_173017) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.string "cookpad_url"
-    t.string "cuisine_name"
-    t.string "originator"
+    t.string "recipe_url", null: false
+    t.string "cuisine_name", null: false
+    t.string "originator", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "synonyms", force: :cascade do |t|
-    t.string "name"
+    t.bigint "ingredient_id", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id"], name: "index_synonyms_on_ingredient_id"
   end
 
   create_table "units", force: :cascade do |t|
-    t.string "unit"
+    t.string "unit", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "food_costs", "prices"
-  add_foreign_key "ingredient_synonyms", "ingredients"
-  add_foreign_key "ingredient_synonyms", "synonyms"
   add_foreign_key "ingredient_units", "ingredients"
   add_foreign_key "ingredient_units", "units"
   add_foreign_key "prices", "ingredients"
   add_foreign_key "prices", "units"
+  add_foreign_key "synonyms", "ingredients"
 end

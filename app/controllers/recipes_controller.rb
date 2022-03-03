@@ -23,8 +23,8 @@ class RecipesController < ApplicationController
   # POST /recipes or /recipes.json
   def create
     binding.irb
-    @recipe_information = scrape_rakuten_recipes(recipe_params[:cookpad_url])
-    @recipe = Recipe.new(cookpad_url: @recipe_information[0], cuisine_name: @recipe_information[1], originator: @recipe_information[2])
+    @recipe_information = scrape_rakuten_recipes(recipe_params[:recipe_url])
+    @recipe = Recipe.new(recipe_url: @recipe_information[0], cuisine_name: @recipe_information[1], originator: @recipe_information[2])
     # if @recipe.save
 
     # end
@@ -63,6 +63,6 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:cookpad_url, :cuisine_name, :originator)
+      params.require(:recipe).permit(:recipe_url, :cuisine_name, :originator)
     end
 end
