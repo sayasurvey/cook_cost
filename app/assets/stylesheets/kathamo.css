@@ -1832,3 +1832,7 @@ nav *[data-role="button"]:hover {
 .text-white {
   color: white;
 }
+
+.text-gray {
+  color: gray;
+}

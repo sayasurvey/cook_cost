@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_02_141030) do
+ActiveRecord::Schema.define(version: 2022_03_02_173017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "food_costs", force: :cascade do |t|
+    t.bigint "price_id", null: false
+    t.float "amount"
+    t.float "cost"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["price_id"], name: "index_food_costs_on_price_id"
+  end
 
   create_table "ingredient_synonyms", force: :cascade do |t|
     t.bigint "ingredient_id", null: false
@@ -73,6 +82,7 @@ ActiveRecord::Schema.define(version: 2022_03_02_141030) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "food_costs", "prices"
   add_foreign_key "ingredient_synonyms", "ingredients"
   add_foreign_key "ingredient_synonyms", "synonyms"
   add_foreign_key "ingredient_units", "ingredients"

@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[ show edit update destroy ]
+  before_action :set_recipe_information, :create
 
   # GET /recipes or /recipes.json
   def index
@@ -21,17 +22,12 @@ class RecipesController < ApplicationController
 
   # POST /recipes or /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    binding.irb
+    @recipe_information = scrape_rakuten_recipes(recipe_params[:cookpad_url])
+    @recipe = Recipe.new(cookpad_url: @recipe_information[0], cuisine_name: @recipe_information[1], originator: @recipe_information[2])
+    # if @recipe.save
 
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully created." }
-        format.json { render :show, status: :created, location: @recipe }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
-    end
+    # end
   end
 
   # PATCH/PUT /recipes/1 or /recipes/1.json

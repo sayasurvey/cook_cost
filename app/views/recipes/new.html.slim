@@ -1,0 +1,11 @@
+= form_with model: @recipe, local: true do |f|
+  .form-group
+    = f.label :cookpad_url
+    = f.text_field :cookpad_url, class: 'text-gray'
+  .form-group
+    = f.label :cuisine_name
+    = f.text_field :cuisine_name, class: 'text-gray'
+  .form-group
+    = f.label :originator
+    = f.text_field :originator, class: 'text-gray'
+  = f.submit '計算', class: 'text-gray'

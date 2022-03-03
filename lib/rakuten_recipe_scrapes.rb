@@ -14,12 +14,14 @@ module RakutenRecipeScrapes
     rows = []
     rows << header
     doc = Nokogiri::HTML.parse(html, nil, charset)
+    cuisine_name = doc.xpath("/html/body/div/div[2]/div/div[2]").text.strip
+    originator = doc.xpath("/html/body/div/div[2]/div/div[3]/div/div[2]/div[2]/a").text.strip
     doc.xpath("/html/body/div/div[2]/div/div[3]/section/ul").css('li').map do |node|
       ingredient = node.css('.recipe_material__item_name').text.strip
       amount = node.css('.recipe_material__item_serving').text.strip
       rows << [ingredient, amount]
     end
 
-    return rows
+    return [url, cuisine_name, originator, rows]
   end
 end
