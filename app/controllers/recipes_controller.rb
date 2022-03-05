@@ -1,6 +1,5 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[ show edit update destroy ]
-  before_action :set_recipe_information, only: %i[ create ]
 
   # GET /recipes or /recipes.json
   def index; end
@@ -30,7 +29,7 @@ class RecipesController < ApplicationController
   def about; end
 
   def scrape
-    @recipe_information = scrape_rakuten_recipes(params[:url])
+    scrape_rakuten_recipes(params[:url])
     redirect_to recipe_path(Recipe.find_by(recipe_url: params[:url]))
   end
 
