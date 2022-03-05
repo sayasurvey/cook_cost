@@ -1,5 +1,5 @@
 class Price < ApplicationRecord
-  has_many :food_costs
+  has_many :food_costs, dependent: :destroy
   belongs_to :ingredient
   belongs_to :unit
 

@@ -3,12 +3,11 @@ class RecipesController < ApplicationController
   before_action :set_recipe_information, only: %i[ create ]
 
   # GET /recipes or /recipes.json
-  def index
-    @recipes = Recipe.all
-  end
+  def index; end
 
   # GET /recipes/1 or /recipes/1.json
   def show
+    @food_costs = FoodCost.where(recipe_id: params[:id]).joins(price: :ingredient).select("ingredients.name, prices.purchase_price, prices.quantity, prices.unit_id, food_costs.amount, food_costs.cost")
   end
 
   # GET /recipes/new
@@ -17,52 +16,27 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /recipes or /recipes.json
-  def create
-    binding.irb
-    @recipe_information = scrape_rakuten_recipes(recipe_params[:recipe_url])
-    @recipe = Recipe.new(recipe_url: @recipe_information[0], cuisine_name: @recipe_information[1], originator: @recipe_information[2])
-    # if @recipe.save
-
-    # end
-  end
+  def create; end
 
   # PATCH/PUT /recipes/1 or /recipes/1.json
-  def update
-    respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully updated." }
-        format.json { render :show, status: :ok, location: @recipe }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  def update; end
 
   # DELETE /recipes/1 or /recipes/1.json
-  def destroy
-    @recipe.destroy
-
-    respond_to do |format|
-      format.html { redirect_to recipes_url, notice: "Recipe was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+  def destroy; end
 
   def about; end
+
+  def scrape
+    @recipe_information = scrape_rakuten_recipes(params[:url])
+    redirect_to recipe_path(Recipe.find_by(recipe_url: params[:url]))
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
       @recipe = Recipe.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def recipe_params
-      params.require(:recipe).permit(:recipe_url, :cuisine_name, :originator)
     end
 end

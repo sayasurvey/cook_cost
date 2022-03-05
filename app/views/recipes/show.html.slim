@@ -1,0 +1,18 @@
+- content_for(:title, "#{@recipe.cuisine_name} | CookCost")
+
+.container
+  h3.title = @recipe.cuisine_name
+  p = "引用元 #{@recipe.recipe_url} (by#{@recipe.originator})"
+      
+  table
+    thead
+      tr
+        th 材料名
+        th 使用量
+        th 材料費
+    tbody
+      - @food_costs.each do |food_cost|
+        tr
+          td = food_cost.name
+          td = food_cost.amount
+          td = food_cost.cost

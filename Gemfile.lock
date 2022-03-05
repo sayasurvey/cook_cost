@@ -84,6 +84,10 @@ GEM
     globalid (1.0.0)
       activesupport (>= 5.0)
     high_voltage (3.1.2)
+    hirb (0.7.3)
+    hirb-unicode-steakknife (0.0.9)
+      hirb (~> 0.5)
+      unicode-display_width (~> 1.1)
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
@@ -191,6 +195,7 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    unicode-display_width (1.8.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -220,6 +225,8 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   high_voltage
+  hirb
+  hirb-unicode-steakknife
   html2slim
   jbuilder (~> 2.7)
   listen (~> 3.3)
