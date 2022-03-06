@@ -1,5 +1,5 @@
 .form-group.mb-2
   = form_with url: {controller: 'recipes', action: 'scrape'}, local: true do |f|
     = f.text_field :url, class: 'text-gray url'
-    = f.button type:"submit", class:'text-gray btn' do
+    = f.button type:"submit", class:'text-gray url-btn' do
       i.fa.fa-calculator.icon

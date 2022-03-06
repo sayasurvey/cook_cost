@@ -61,3 +61,5 @@ gem 'html2slim'
 gem 'high_voltage'
 gem 'seed-fu'
 gem 'font-awesome-sass'
+gem 'dotenv-rails'
+gem "net-smtp"

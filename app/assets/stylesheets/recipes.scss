@@ -66,7 +66,7 @@ td span{
   box-shadow: 0 2px 5px #999;
  }
 
- .title-tape {
+.title-tape {
   position: absolute;
   top: -15px;
   left: 30px;
@@ -80,20 +80,50 @@ td span{
   transform: rotate(-3deg);
  }
 
- form {
+form {
    margin: 0px 10px 0px 10px;
  }
 
- .url {
+.url {
    width: 90%;
  }
 
- .btn {
+.url-btn {
   background-color: #FFB800;
   width: 10%;
   border-color: #FFB800;
  }
 
- .icon {
+.icon {
   color: white;
  }
+
+.width-100 {
+   width: 100%;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.clear-both {
+  clear:  both;
+}
+
+table {
+  border:1px solid;
+}
+
+.btn {
+  background-color: #FFB800;
+  padding: 0.2rem 0.6rem;
+  color: white
+}
+
+.container{
+  padding: 0px;
+}

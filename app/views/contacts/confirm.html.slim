@@ -1,0 +1,29 @@
+- content_for(:title, 'お問い合わせ確認|CookCost')
+
+.container.col-sm-12
+  h1.title.text-center.my-2 お問い合わせ確認
+
+  .table.m-3
+    table
+      tbody
+        tr
+          th お名前
+          td.px-2= @contact.name
+        tr
+          th メールアドレス
+          td.px-2= @contact.email
+        tr
+          th メッセージ
+          td.px-2.message= @contact.message
+
+  .form.mx-2
+    = form_for(@contact) do |f|
+      = f.hidden_field :name
+      = f.hidden_field :email
+      = f.hidden_field :message
+      = f.submit '送信', class: 'float-right clear-both'
+    = form_for @contact, url: back_path do |f|
+      = f.hidden_field :name
+      = f.hidden_field :email
+      = f.hidden_field :message
+      = f.submit '入力画面に戻る', class: 'float-left'
