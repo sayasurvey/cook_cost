@@ -1,18 +1,31 @@
 - content_for(:title, "#{@recipe.cuisine_name} | CookCost")
 
 .container
-  h3.title = @recipe.cuisine_name
-  p = "引用元 #{@recipe.recipe_url} (by#{@recipe.originator})"
-      
+  .kakomi-tape
+    span.title-tape = '引用元'
+    h3.title = @recipe.cuisine_name
+    p = "#{@recipe.recipe_url}"
+    p.text-right = "by#{@recipe.originator}"
+
   table
+    caption = @recipe.how_many
     thead
       tr
-        th 材料名
-        th 使用量
-        th 材料費
+        th.text-center 材料名
+        th.text-center 使用量
+        th.text-center 材料費
     tbody
       - @food_costs.each do |food_cost|
         tr
-          td = food_cost.name
-          td = food_cost.amount
-          td = food_cost.cost
+          td style="width: 40%"
+            = food_cost.name
+            br/
+            /単位の取得がうまく行かなかったので応急処置
+            span = "#{food_cost.purchase_price}円/@#{food_cost.quantity}#{Unit.find_by(id: food_cost.unit_id).unit}"
+          td.text-right style="width: 30%" = food_cost.quantity_unit
+          td.text-right style="width: 30%" = food_cost.cost.round(1)
+    tfoot
+      tr
+        th
+        th.text-right = '合計'
+        th.text-right = @cost_sum.round(1)

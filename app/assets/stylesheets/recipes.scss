@@ -46,3 +46,49 @@
   background-size: contain;
   background-position: right -50px top 10px;
 }
+
+td {
+  line-height: 70%
+}
+
+td span{
+  font-size: 0.7rem;
+}
+
+.kakomi-tape {
+  position:relative;
+  padding: 25px 20px 10px;
+  margin: 0.5em auto;
+  margin-top: 1.5em;
+  width: 90%;
+  color: #555555;
+  background-color: #ffffbe;
+  box-shadow: 0 2px 5px #999;
+ }
+
+ .title-tape {
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  padding: 4px 20px;
+  color: #555555;
+  font-weight: bold;
+  background-color: rgba(255,255,255,.1);
+  border-left: 2px dotted rgba(0,0,0,.1);
+  border-right: 2px dotted rgba(0,0,0,.1);
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  transform: rotate(-3deg);
+ }
+
+ form {
+   margin: 0px 10px 0px 10px;
+ }
+
+ .url{
+   width: 90%;
+ }
+
+ .btn{
+  background-color: #FFB800;
+  width: 10%
+ }

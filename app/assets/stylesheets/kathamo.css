@@ -751,7 +751,6 @@ q {
 figcaption, 
 caption { 
   font-size: 0.75rem; 
-  font-style: italic; 
   line-height: 2.333333333; 
 }
 
@@ -824,13 +823,13 @@ select {
 
 input,
 textarea { 
-  line-height: 34px;
+  line-height: 28px;
 }
 
 input:focus,
 textarea:focus,
 select:focus { 
-  outline: none; 
+  outline: none;
 }
 
 input[type="checkbox"],
@@ -978,7 +977,7 @@ td {
   padding-right: 13px;
   padding-bottom: 8px;
   padding-left: 13px;
-  font-size: 0.8125rem; 
+  font-size: 5vw;
   font-weight: 400; 
   line-height: 2.153846154; 
   text-align: left; 
