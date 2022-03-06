@@ -22,7 +22,7 @@
               = food_cost.name
               br/
               /単位の取得がうまく行かなかったので応急処置
-              span = "#{food_cost.purchase_price}円/@#{food_cost.quantity}#{Unit.find_by(id: food_cost.unit_id).unit}"
+              span = "@#{food_cost.purchase_price}円/#{food_cost.quantity}#{Unit.find_by(id: food_cost.unit_id).unit}"
             td.text-right style="width: 30%" = food_cost.quantity_unit
             td.text-right style="width: 30%" = food_cost.cost.round(1)
       tfoot
