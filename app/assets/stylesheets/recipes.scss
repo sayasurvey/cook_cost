@@ -41,10 +41,67 @@
   height: 5px;
 }
 
-.layer-bg{
+/* 吹き出し本体 - 普通の吹き出し */
+.balloon2{
+  position: relative;
+  margin: 10px;
+  padding-left: 10px;
+  background-color: #ffee8d;
+  border-radius: 10px;         /* 角丸を指定 */
+  white-space: nowrap;
+  margin:0 auto
+}
+
+.how-to-one {
+  width: 260px;
+  margin-top: 20px;
+}
+
+/* 三角アイコン - 普通の吹き出し */
+.how-to-one::before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 40%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top: 15px solid #ffee8d;
+}
+
+.how-to-two {
+  width: 230px;
+  margin-top: 55px;
+}
+
+.how-to-two::before{
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 70%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-bottom: 15px solid #ffee8d;
+}
+
+.how-to-three {
+  width: 180px;
+  margin-top: 75px;
+  left: -50px;
+}
+
+.layer-about{
   background: url(Women_in_distress.png) no-repeat 0 0;
   background-size: contain;
   background-position: right -50px top 10px;
+}
+
+.layer-how-to{
+  background: url(how_to.png) no-repeat 0 0;
+  background-size: contain;
+  background-position-x: center;
+  background-position: top 100px;
+  height: 300px;
+  text-align: center;
 }
 
 td {

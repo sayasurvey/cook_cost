@@ -1,6 +1,6 @@
 .container.col-sm-12.px-2
   = render 'recipes/new'
-  .about.layer.layer-bg
+  .about.layer.layer-about
     h1.p-2.text-center
       |ABOUT
     p.px-3
@@ -11,12 +11,14 @@
       |自炊するのと、<br>惣菜を買うのどちらが安いんだろう
     p.px-3
       |楽天レシピの情報から材料費を<br>シュミレーションするサービスです。
+
   .how-to
     h1.p-2.text-center.mt-2
       |HOW TO
-    p
-      |①調べたい楽天レシピのURL入力
-    p
-      |②電卓のアイコンをクリック
-    p
-      |③材料費が表示される
+    .layer.layer-how-to
+      .balloon2.how-to-one
+        |①調べたいレシピのURLを入力
+      .balloon2.how-to-two
+        |②電卓のアイコンをクリック
+      .balloon2.how-to-three
+        |③材料費が表示される
