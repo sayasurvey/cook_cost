@@ -4,7 +4,7 @@
   .kakomi-tape
     span.title-tape = '引用元'
     h3.title = @recipe.cuisine_name
-    p = "#{@recipe.recipe_url}"
+    =link_to "#{@recipe.recipe_url}", @recipe.recipe_url, id: 'recipe_url'
     p.text-right = "by#{@recipe.originator}"
 
   .table.mx-3
@@ -18,15 +18,19 @@
       tbody
         - @food_costs.each do |food_cost|
           tr
-            td style="width: 40%"
+            td style="width: 42%"
               = food_cost.name
               br/
               /単位の取得がうまく行かなかったので応急処置
               span = "@#{food_cost.purchase_price}円/#{food_cost.quantity}#{Unit.find_by(id: food_cost.unit_id).unit}"
-            td.text-right style="width: 30%" = food_cost.quantity_unit
-            td.text-right style="width: 30%" = food_cost.cost.round(1)
+            td.text-right#quantity_unit style="width: 32rem" = food_cost.quantity_unit
+            td.text-right style="width: 25%" = food_cost.cost.round(1)
       tfoot
         tr
           th
           th.text-right = '合計'
           th.text-right = @cost_sum.round(1)
+
+javascript:
+  jQuery("h3").fitText(2.1);
+  jQuery("#quantity_unit").fitText();

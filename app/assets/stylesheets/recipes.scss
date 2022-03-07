@@ -48,11 +48,12 @@
 }
 
 td {
-  line-height: 70%
+  line-height: 70%;
+  font-size: 4vw;
 }
 
 td span{
-  font-size: 0.7rem;
+  font-size: 2vw;
 }
 
 .kakomi-tape {
@@ -126,4 +127,16 @@ table {
 
 .container{
   padding: 0px;
+}
+
+th {
+  font-size: 4vw;
+}
+
+#recipe_url {
+  font-size: 3.7vw;
+}
+
+h3 {
+  white-space: nowrap;
 }
