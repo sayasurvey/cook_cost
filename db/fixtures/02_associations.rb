@@ -21,7 +21,7 @@ csv.each do |price|
     s.purchase_price = price[2]
     s.quantity = price[3]
     s.unit = Unit.find_by(unit: price[4])
-    s.one_base_unit_price = price[5]
+    s.one_base_unit_price = price[2].to_i / (price[3].to_i * IngredientUnit.includes(:ingredient, :unit).find_by(ingredient: { name: price[1] }, unit: { unit: price[4] }).ratio)
   end
 end
 

@@ -16,7 +16,7 @@ module RakutenRecipeScrapes
     doc = Nokogiri::HTML.parse(html, nil, charset)
     html_path = "/html/body/div/div[2]/div/"
     register_recipe_from_html(doc, html_path)
-    register_ingredients_from_html(doc, html_path)
+    register_ingredients_from_html(doc, html_path, url)
   end
 
   def full_to_half(str)
@@ -33,17 +33,37 @@ module RakutenRecipeScrapes
     end
   end
 
-  def register_ingredients_from_html(doc, html_path)
+  def register_ingredients_from_html(doc, html_path, url)
     doc.xpath("#{html_path}div[3]/section/ul").css('li').map do |node|
       synonym = node.css('.recipe_material__item_name').text.strip
       ingredient = Ingredient.includes(:synonyms).find_by(synonyms: { name: synonym } ).name
       quantity_unit = full_to_half(node.css('.recipe_material__item_serving').text.strip)
-      quantity = quantity_unit.gsub(/[^[0-9.]]/, "").to_f
-      unit = quantity_unit.delete("0-9.")
+      if !(/[0-9.]+/.match(quantity_unit))
+        quantity = 1
+        unit = quantity_unit.match(/[^\x01-\x7E]+/).string
+      elsif /([大小]+[さじ]*[匙]*)([0-9.]*)[~〜]*[0-9.]*/.match(quantity_unit)
+        quantity_unit = quantity_unit.match(/([大小]+[さじ]*[匙]*)([0-9.]*)[~〜]*[0-9.]*/)
+        unit = quantity_unit[1]
+        quantity = quantity_unit[2].to_f
+        quantity_unit = "#{quantity_unit[1]}#{quantity_unit[2]}"
+      elsif /([0-9.]+)[~～]*[0-9.]*([個本コこケ缶片袋杯膳束合枚鞘房a-z|グラム|]*)/.match(quantity_unit)
+        quantity_unit = quantity_unit.match(/([0-9.]+)[~～]*[0-9.]*([個本コこケ缶片袋杯膳束合枚鞘房a-z|グラム|]*)/)
+        unit = quantity_unit[2]
+        quantity = quantity_unit[1].to_f
+        quantity_unit = "#{quantity_unit[1]}#{quantity_unit[2]}"
+      else
+        Unregistereds.find_or_initialize_by(url: url, ingredient: ingredient, quantity: quantity_unit)
+      end
+
+      # if /[/]/.match(amount)
+      #   amount = amount.match(/([0-9.]+)[/]+([0-9.]+)/)
+      #   amount = (amount[1] / amount[2]).to_f.round(2)
+      # end
+
       if unit == Ingredient.find_by(name: ingredient).base_unit
         amount = quantity
       else
-        ratio = IngredientUnit.includes(:ingredient, :unit).find_by(ingredient: { name: ingredient }, unit: { unit: unit }).ratio.to_i
+        ratio = IngredientUnit.includes(:ingredient, :unit).find_by(ingredient: { name: ingredient }, unit: { unit: unit }).ratio.to_f
         amount = ratio * quantity
       end
       cost = amount * Price.includes(:ingredient).find_by(ingredient: { name: ingredient }).one_base_unit_price
