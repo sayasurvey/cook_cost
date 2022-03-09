@@ -26,7 +26,6 @@ module RakutenRecipeScrapes
   def register_recipe_from_html(doc, html_path)
     cuisine_name = doc.xpath("#{html_path}div[2]").text.strip
     originator = doc.xpath("#{html_path}div[3]/div/div[2]/div[2]/a").text.strip
-    binding.irb
     how_many = doc.xpath("#{html_path}div[3]/section/h2[@class='contents_title contents_title_mb']").text.strip
     @recipe = Recipe.find_or_initialize_by(recipe_url: params[:url], cuisine_name: cuisine_name, originator: originator, how_many: how_many)
     if @recipe.new_record? && !@recipe.save
