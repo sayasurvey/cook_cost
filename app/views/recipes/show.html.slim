@@ -19,10 +19,16 @@
         - @food_costs.each do |food_cost|
           tr
             td style="width: 42%"
-              = food_cost.name
-              br/
-              /単位の取得がうまく行かなかったので応急処置
-              span = "@#{food_cost.purchase_price}円/#{food_cost.quantity}#{Unit.find_by(id: food_cost.unit_id).unit}"
+              - if food_cost.name == '未登録'
+                = food_cost.note
+                br/
+                /単位の取得がうまく行かなかったので応急処置
+                span = 'データ未登録'
+              - else
+                = food_cost.name
+                br/
+                /単位の取得がうまく行かなかったので応急処置
+                span = "@#{food_cost.purchase_price}円/#{food_cost.quantity}#{Unit.find_by(id: food_cost.unit_id).unit}"
             td.text-right#quantity_unit style="width: 32rem" = food_cost.quantity_unit
             td.text-right style="width: 25%" = food_cost.cost.round(1)
       tfoot

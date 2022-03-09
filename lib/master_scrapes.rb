@@ -38,7 +38,6 @@ class Scrape
       find('div.field_search button').click
       sleep 5
       target_url_array = page.all('.recipe_ranking__item a').map {|item| item[:href] }
-      binding.irb
       target_url_array.each do |target_url|
         visit target_url
         doc = Nokogiri::HTML.parse(html, nil)

@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
-    @food_costs = FoodCost.where(recipe_id: params[:id]).joins(price: :ingredient).select("ingredients.name, prices.purchase_price, prices.quantity, prices.unit_id, food_costs.quantity_unit, food_costs.cost")
+    @food_costs = FoodCost.where(recipe_id: params[:id]).joins(price: :ingredient).select("ingredients.name, prices.purchase_price, prices.quantity, prices.unit_id, food_costs.quantity_unit, food_costs.cost, food_costs.note")
     @cost_sum = @food_costs.sum(:cost)
   end
 
