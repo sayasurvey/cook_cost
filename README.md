@@ -41,4 +41,4 @@ README~ER図作成： 2/28〆切
 [Figma](https://www.figma.com/file/DEMJHv3GKw0BrKaWAQhvK5/%E3%82%B9%E3%83%9E%E3%83%9B?node-id=2%3A10)
 
 # ER図
-[ER図](https://drive.google.com/file/d/1lAK6ljTnjMDGHtjC3LTSOo4y0dNwsXX4/view?usp=sharing)
+[![Image from Gyazo](https://i.gyazo.com/c110c712026e850065e97d00b721a94f.png)](https://gyazo.com/c110c712026e850065e97d00b721a94f)
