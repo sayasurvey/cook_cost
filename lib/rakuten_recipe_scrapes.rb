@@ -20,7 +20,7 @@ module RakutenRecipeScrapes
   end
 
   def full_to_half(str)
-    str.tr("０-９ａ-ｚＡ-Ｚ．＠−", "0-9a-zA-Z.@-")
+    str.tr("０-９ａ-ｚＡ-Ｚ．（）＠−", "0-9a-zA-Z.()@-")
   end
 
   def register_recipe_from_html(doc, html_path)
@@ -36,16 +36,17 @@ module RakutenRecipeScrapes
     @recipe_id = Recipe.find_by(recipe_url: params[:url]).id
     FoodCost.where(recipe_id: @recipe_id, price_id: 100000).destroy_all
     doc.xpath("#{html_path}div[3]/section/ul").css('li').map do |node|
-      synonym = node.css('.recipe_material__item_name').text.strip
+      synonym = node.css('.recipe_material__item_name').text.strip.match(/[^一-龠ぁ-んァ-ヶーｦ-ﾟ]*([一-龠ぁ-んァ-ヶーｦ-]*)[^一-龠ぁ-んァ-ヶーｦ-ﾟ]*/)[1]
+      if synonym == ""
+        synonym = node.css('.recipe_material__item_name').text.strip
+      end
       quantity_unit = full_to_half(node.css('.recipe_material__item_serving').text.strip)
-
       if Synonym.find_by(name: synonym)
         ingredient = Ingredient.includes(:synonyms).find_by(synonyms: { name: synonym } ).name
       else
         @food_cost = FoodCost.create(recipe_id: @recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: 100000, note:synonym)
         next
       end
-
       if !(/[0-9.]+/.match(quantity_unit))
         quantity = 1
         unit = quantity_unit.match(/[^\x01-\x7E]+/).string
@@ -59,8 +60,12 @@ module RakutenRecipeScrapes
           quantity = quantity_unit[2].to_f
         end
         quantity_unit = "#{quantity_unit[1]}#{quantity_unit[2]}"
-      elsif /([0-9.\/]+)[~～]*[0-9.\/]*([個本コこケ缶片袋杯膳束合枚鞘房玉つ人食切匹尾ケ丁a-zA-Z|グラム|つかみ|つまみ｜ｸﾞﾗﾑ|カップ|]*)/.match(quantity_unit)
-        quantity_unit = quantity_unit.match(/([0-9.\/]+)[~～]*[0-9.\/]*([個本コこケ缶片袋杯膳束合枚鞘房玉つ人食切匹尾ケ丁a-zA-Z|グラム|つかみ|つまみ｜ｸﾞﾗﾑ|カップ|]*)/)
+      elsif /([0-9.\/]+)[~～]*[0-9.\/]*([個本コこヶ缶片袋杯膳束合枚鞘房握玉つ人食切匹尾株枚斤半玉ケ丁粒箱a-zA-Z|グラム|つかみ|つまみ｜ｸﾞﾗﾑ|カップ|パック|かけ|センチ|カケ|リットル|回し|まい|節|カット|]*)/.match(quantity_unit)
+        if quantity_unit.match(/([0-9.\/]+)[~～]*[0-9.\/]*([個本コこヶ缶片袋杯膳束合枚鞘房握玉つ人食切匹尾株枚斤半玉ケ丁粒箱a-zA-Z|グラム|つかみ|つまみ｜ｸﾞﾗﾑ|カップ|パック|かけ|センチ|カケ|リットル|回し|まい|節|カット|]*)/)[2] == ""
+          quantity_unit = quantity_unit.match(/\(([0-9.\/]+)[~～]*[0-9.\/]*([個本コこヶ缶片袋杯膳束合枚鞘房握玉つ人食切匹尾株枚斤半玉ケ丁粒箱a-zA-Z|グラム|つかみ|つまみ｜ｸﾞﾗﾑ|カップ|パック|かけ|センチ|カケ|リットル|回し|まい|節|カット|]*)\)/)
+        else
+          quantity_unit = quantity_unit.match(/([0-9.\/]+)[~～]*[0-9.\/]*([個本コこヶ缶片袋杯膳束合枚鞘房握玉つ人食切匹尾株枚斤半玉ケ丁粒箱a-zA-Z|グラム|つかみ|つまみ｜ｸﾞﾗﾑ|カップ|パック|かけ|センチ|カケ|リットル|回し|まい|節|カット|]*)/)
+        end
         unit = quantity_unit[2]
         if /\//.match(quantity_unit[1])
           fraction = quantity_unit[1].match(/([0-9])+\/([0-9])/)
