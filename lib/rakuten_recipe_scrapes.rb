@@ -66,6 +66,11 @@ module RakutenRecipeScrapes
         else
           quantity_unit = quantity_unit.match(/([0-9.\/]+)[~～]*[0-9.\/]*([個本コこヶ缶片袋杯膳束合枚鞘房握玉つ人食切匹尾株枚斤半玉ケ丁粒箱a-zA-Z|グラム|つかみ|つまみ｜ｸﾞﾗﾑ|カップ|パック|かけ|センチ|カケ|リットル|回し|まい|節|カット|]*)/)
         end
+        if quantity_unit == nil
+          quantity_unit = full_to_half(node.css('.recipe_material__item_serving').text.strip)
+          @food_cost = FoodCost.create(recipe_id: @recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: 100000, note:synonym)
+          next
+        end
         unit = quantity_unit[2]
         if /\//.match(quantity_unit[1])
           fraction = quantity_unit[1].match(/([0-9])+\/([0-9])/)
@@ -75,7 +80,6 @@ module RakutenRecipeScrapes
         end
         quantity_unit = "#{quantity_unit[1]}#{quantity_unit[2]}"
       end
-
       if unit == Ingredient.find_by(name: ingredient).base_unit
         amount = quantity
       else
