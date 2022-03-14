@@ -64,4 +64,6 @@ gem 'seed-fu'
 gem 'font-awesome-sass'
 gem 'dotenv-rails'
 gem 'poltergeist'
-gem "net-smtp"
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
