@@ -8,6 +8,9 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag    'application' 
+    - if Rails.env.production?
+      = render 'layouts/google_analytics'
+
   body
     = render 'shared/header'
     = yield
