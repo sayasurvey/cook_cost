@@ -1,0 +1,17 @@
+- content_for(:title, 'お問い合わせ|CookCost')
+
+.container.col-sm-12
+  h1.title.text-center.my-2 お問い合わせ
+
+  .form.mx-4.mt-2
+    = form_for @contact, url: confirm_path do |f|
+      .form-group
+        = f.label :name,'お名前※'
+        = f.text_field :name, class: 'width-100'
+      .form-group
+        = f.label :email,'メールアドレス※'
+        = f.email_field :email, class: 'width-100'
+      .form-group
+        = f.label :message,'メッセージ※'
+        = f.text_area :message, size: '10×10', class: 'width-100'
+      = f.submit '入力内容確認', class: 'float-right'

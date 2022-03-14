@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recipe_url: MyString
+  cuisine_name: MyString
+  originator: MyString
+
+two:
+  recipe_url: MyString
+  cuisine_name: MyString
+  originator: MyString

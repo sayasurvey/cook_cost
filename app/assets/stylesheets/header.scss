@@ -1,0 +1,21 @@
+.header-background{
+  background-image: image-url("header.jpg");
+  background-size: contain;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 150px;
+}
+
+.title-text{
+  padding-top: 55px;
+  font-size: 250%;
+  color: white;
+  text-shadow:1px 1px 0 slategray, -1px -1px 0 slategray,
+  -1px 1px 0 slategray, 1px -1px 0 slategray,
+  0px 1px 0 slategray,  0-1px 0 slategray,
+  -1px 0 0 slategray, 1px 0 0 slategray;
+  h1{
+    font-family: "Arial Black", HiraKakuProN-W6, impact, monospace;
+  }
+}

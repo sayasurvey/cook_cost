@@ -1,0 +1,207 @@
+// Place all the styles related to the recipes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.layer{
+  display: flex;
+  flex-flow: column;
+  p{
+    font-size: 0.8rem;
+  }
+}
+
+/* 吹き出し本体 */
+.balloon{
+  position: relative;
+  background-color: gainsboro;
+  width: 240px;
+  border-radius: 30px;
+}
+/* 大きい丸 */
+.balloon::before{
+  content: '';
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background-color: gainsboro;
+  right: -15px;
+  bottom: 17px;
+  width: 10px;
+  height: 10px;
+}
+/* 小さい丸 */
+.balloon::after{
+  content: '';
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background-color: gainsboro;
+  right: -25px;
+  bottom: 20px;
+  width: 5px;
+  height: 5px;
+}
+
+/* 吹き出し本体 - 普通の吹き出し */
+.balloon2{
+  position: relative;
+  margin: 10px;
+  padding-left: 10px;
+  background-color: #ffee8d;
+  border-radius: 10px;         /* 角丸を指定 */
+  white-space: nowrap;
+  margin:0 auto
+}
+
+.how-to-one {
+  width: 260px;
+  margin-top: 20px;
+}
+
+/* 三角アイコン - 普通の吹き出し */
+.how-to-one::before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 40%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top: 15px solid #ffee8d;
+}
+
+.how-to-two {
+  width: 230px;
+  margin-top: 55px;
+}
+
+.how-to-two::before{
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 70%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-bottom: 15px solid #ffee8d;
+}
+
+.how-to-three {
+  width: 180px;
+  margin-top: 75px;
+  left: -50px;
+}
+
+.layer-about{
+  background: url(Women_in_distress.png) no-repeat 0 0;
+  background-size: contain;
+  background-position: right -50px top 10px;
+}
+
+.layer-how-to{
+  background: url(how_to.png) no-repeat 0 0;
+  background-size: contain;
+  background-position-x: center;
+  background-position: top 100px;
+  height: 300px;
+  text-align: center;
+}
+
+td {
+  line-height: 70%;
+  font-size: 4vw;
+}
+
+td span{
+  font-size: 2vw;
+}
+
+.kakomi-tape {
+  position:relative;
+  padding: 25px 20px 10px;
+  margin: 0.5em auto;
+  margin-top: 1.5em;
+  width: 90%;
+  color: #555555;
+  background-color: #ffffbe;
+  box-shadow: 0 2px 5px #999;
+ }
+
+.title-tape {
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  padding: 4px 20px;
+  color: #555555;
+  font-weight: bold;
+  background-color: rgba(255,255,255,.1);
+  border-left: 2px dotted rgba(0,0,0,.1);
+  border-right: 2px dotted rgba(0,0,0,.1);
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  transform: rotate(-3deg);
+ }
+
+form {
+   margin: 0px 10px 0px 10px;
+ }
+
+.url {
+   width: 90%;
+ }
+
+.url-btn {
+  background-color: #FFB800;
+  width: 10%;
+  border-color: #FFB800;
+ }
+
+.icon {
+  color: white;
+ }
+
+.width-100 {
+   width: 100%;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.clear-both {
+  clear:  both;
+}
+
+table {
+  border:1px solid;
+}
+
+.btn {
+  background-color: #FFB800;
+  padding: 0.2rem 0.6rem;
+  color: white
+}
+
+.container{
+  padding: 0px;
+}
+
+th {
+  font-size: 4vw;
+}
+
+#recipe_url {
+  font-size: 3.7vw;
+}
+
+.annotation{
+  background-color: #ffd1d1;
+  padding: 25px 10px 3px;
+  .title-tape{
+    color: red;
+  }
+  p {
+    padding: 5px 0px;
+    font-size: 3.3vw;
+  }
+}
