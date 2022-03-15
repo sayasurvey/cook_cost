@@ -33,53 +33,25 @@ module RakutenRecipeScrapes
   end
 
   def register_ingredients_from_html(doc, html_path, url)
-    @recipe_id = Recipe.find_by(recipe_url: params[:url]).id
-    FoodCost.where(recipe_id: @recipe_id, price_id: 100000).destroy_all
+    recipe_id = Recipe.find_by(recipe_url: params[:url]).id
+    FoodCost.where(recipe_id: recipe_id, price_id: 100000).destroy_all
     doc.xpath("#{html_path}div[3]/section/ul").css('li').map do |node|
-      synonym = node.css('.recipe_material__item_name').text.strip.match(/[^一-龠ぁ-んァ-ヶーｦ-ﾟ]*([一-龠ぁ-んァ-ヶーｦ-]*)[^一-龠ぁ-んァ-ヶーｦ-ﾟ]*/)[1]
+      synonym = node.css('.recipe_material__item_name').text.strip.match(Constants::JAPANESE_ONLY)[1]
       if synonym == ""
         synonym = node.css('.recipe_material__item_name').text.strip
       end
       quantity_unit = full_to_half(node.css('.recipe_material__item_serving').text.strip)
+
       if Synonym.find_by(name: synonym)
         ingredient = Ingredient.includes(:synonyms).find_by(synonyms: { name: synonym } ).name
       else
-        @food_cost = FoodCost.create(recipe_id: @recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: 100000, note:synonym)
+        @food_cost = FoodCost.create(recipe_id: recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: 100000, note:synonym)
         next
       end
-      if !(/[0-9.]+/.match(quantity_unit))
-        quantity = 1
-        unit = quantity_unit.match(/[^\x01-\x7E]+/).string
-      elsif /([大小]+[さじ]*[匙]*)([0-9.\/]*)[~〜]*[0-9.\/]*/.match(quantity_unit)
-        quantity_unit = quantity_unit.match(/([大小]+[さじ]*[匙]*)([0-9.\/]*)[~〜]*[0-9.\/]*/)
-        unit = quantity_unit[1]
-        if /\//.match(quantity_unit[2])
-          fraction = quantity_unit[2].match(/([0-9])+\/([0-9])/)
-          quantity = (fraction[1].to_f / fraction[2].to_f).round(2)
-        else
-          quantity = quantity_unit[2].to_f
-        end
-        quantity_unit = "#{quantity_unit[1]}#{quantity_unit[2]}"
-      elsif /([0-9.\/]+)[~～]*[0-9.\/]*([個本コこヶ缶片袋杯膳束合枚鞘房握玉つ人食切匹尾株枚斤半玉ケ丁粒箱a-zA-Z|グラム|つかみ|つまみ｜ｸﾞﾗﾑ|カップ|パック|かけ|センチ|カケ|リットル|回し|まい|節|カット|]*)/.match(quantity_unit)
-        if quantity_unit.match(/([0-9.\/]+)[~～]*[0-9.\/]*([個本コこヶ缶片袋杯膳束合枚鞘房握玉つ人食切匹尾株枚斤半玉ケ丁粒箱a-zA-Z|グラム|つかみ|つまみ｜ｸﾞﾗﾑ|カップ|パック|かけ|センチ|カケ|リットル|回し|まい|節|カット|]*)/)[2] == ""
-          quantity_unit = quantity_unit.match(/\(([0-9.\/]+)[~～]*[0-9.\/]*([個本コこヶ缶片袋杯膳束合枚鞘房握玉つ人食切匹尾株枚斤半玉ケ丁粒箱a-zA-Z|グラム|つかみ|つまみ｜ｸﾞﾗﾑ|カップ|パック|かけ|センチ|カケ|リットル|回し|まい|節|カット|]*)\)/)
-        else
-          quantity_unit = quantity_unit.match(/([0-9.\/]+)[~～]*[0-9.\/]*([個本コこヶ缶片袋杯膳束合枚鞘房握玉つ人食切匹尾株枚斤半玉ケ丁粒箱a-zA-Z|グラム|つかみ|つまみ｜ｸﾞﾗﾑ|カップ|パック|かけ|センチ|カケ|リットル|回し|まい|節|カット|]*)/)
-        end
-        if quantity_unit == nil
-          quantity_unit = full_to_half(node.css('.recipe_material__item_serving').text.strip)
-          @food_cost = FoodCost.create(recipe_id: @recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: 100000, note:synonym)
-          next
-        end
-        unit = quantity_unit[2]
-        if /\//.match(quantity_unit[1])
-          fraction = quantity_unit[1].match(/([0-9])+\/([0-9])/)
-          quantity = (fraction[1].to_f / fraction[2].to_f).round(2)
-        else
-          quantity = quantity_unit[1].to_f
-        end
-        quantity_unit = "#{quantity_unit[1]}#{quantity_unit[2]}"
-      end
+
+      quantity_unit, quantity, unit = regular_expression(node, quantity_unit, recipe_id, synonym)
+      next if quantity_unit == nil
+
       if unit == Ingredient.find_by(name: ingredient).base_unit
         amount = quantity
       else
@@ -87,14 +59,70 @@ module RakutenRecipeScrapes
           ratio = IngredientUnit.includes(:ingredient, :unit).find_by(ingredient: { name: ingredient }, unit: { unit: unit }).ratio.to_f
           amount = ratio * quantity
         else
-          @food_cost = FoodCost.create(recipe_id: @recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: 100000, note:synonym)
+          @food_cost = FoodCost.create(recipe_id: recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: 100000, note:synonym)
           next
         end
       end
+
       cost = amount * Price.includes(:ingredient).find_by(ingredient: { name: ingredient }).one_base_unit_price
-      @food_cost = FoodCost.find_or_initialize_by(recipe_id: @recipe_id, quantity_unit: quantity_unit, price_id: Price.includes(:ingredient).find_by(ingredient: { name: ingredient }).id)
+      @food_cost = FoodCost.find_or_initialize_by(recipe_id: recipe_id, quantity_unit: quantity_unit, price_id: Price.includes(:ingredient).find_by(ingredient: { name: ingredient }).id)
       @food_cost.assign_attributes(cost: cost, note: '')
       @food_cost.save
     end
+  end
+
+  def regular_expression(node, quantity_unit, recipe_id, synonym)
+    if !(/[0-9.]+/.match(quantity_unit))
+      quantity = 1
+      unit = quantity_unit.match(Constants::JAPANESE_ONLY).string
+
+    elsif Constants::UNIT_SPOON.match(quantity_unit)
+      quantity_unit = quantity_unit.match(Constants::UNIT_SPOON)
+      unit = quantity_unit[1]
+      if /\//.match(quantity_unit[2])
+        fraction = quantity_unit[2].match(/([0-9])+\/([0-9])/)
+        quantity = (fraction[1].to_f / fraction[2].to_f).round(2)
+      else
+        quantity = quantity_unit[2].to_f
+      end
+      quantity_unit = "#{quantity_unit[1]}#{quantity_unit[2]}"
+
+    elsif Constants::UNIT_CAP.match(quantity_unit)
+      quantity_unit = quantity_unit.match(Constants::UNIT_CAP)
+      unit = quantity_unit[1]
+      if /\//.match(quantity_unit[2])
+        fraction = quantity_unit[2].match(/([0-9])+\/([0-9])/)
+        quantity = (fraction[1].to_f / fraction[2].to_f).round(2)
+      else
+        quantity = quantity_unit[2].to_f
+      end
+      quantity_unit = "#{quantity_unit[1]}#{quantity_unit[2]}"
+
+    elsif Constants::UNIT_AFTER.match(quantity_unit)
+      if quantity_unit.match(Constants::UNIT_AFTER)[2] == ""
+        quantity_unit = quantity_unit.match(Constants::UNIT_AFTER_PARENTHESES)
+      else
+        quantity_unit = quantity_unit.match(Constants::UNIT_AFTER)
+      end
+
+      if quantity_unit == nil
+        quantity_unit = full_to_half(node.css('.recipe_material__item_serving').text.strip)
+        @food_cost = FoodCost.create(recipe_id: recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: 100000, note:synonym)
+        return quantity_unit
+      end
+
+      unit = quantity_unit[2]
+
+      if /\//.match(quantity_unit[1])
+        fraction = quantity_unit[1].match(/([0-9])+\/([0-9])/)
+        quantity = (fraction[1].to_f / fraction[2].to_f).round(2)
+      else
+        quantity = quantity_unit[1].to_f
+      end
+
+      quantity_unit = "#{quantity_unit[1]}#{quantity_unit[2]}"
+    end
+
+    return [quantity_unit, quantity, unit]
   end
 end

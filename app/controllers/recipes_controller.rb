@@ -30,8 +30,13 @@ class RecipesController < ApplicationController
   def about; end
 
   def scrape
-    scrape_rakuten_recipes(params[:url])
-    redirect_to recipe_path(Recipe.find_by(recipe_url: params[:url]))
+    if params[:url].match(/([https:\/\/recipe.rakuten.co.jp\/recipe\/]+[0-9]{10}\/)/)
+      scrape_rakuten_recipes(params[:url])
+      redirect_to recipe_path(Recipe.find_by(recipe_url: params[:url]))
+    else
+      flash.now['danger'] = '無効なURLです'
+      render :about
+    end
   end
 
   private
