@@ -50,7 +50,7 @@ module RakutenRecipeScrapes
       end
 
       quantity_unit, quantity, unit = regular_expression(node, quantity_unit, recipe_id, synonym)
-      next if quantity_unit == nil
+      next if unit == nil
 
       if unit == Ingredient.find_by(name: ingredient).base_unit
         amount = quantity
@@ -108,7 +108,7 @@ module RakutenRecipeScrapes
       if quantity_unit == nil
         quantity_unit = full_to_half(node.css('.recipe_material__item_serving').text.strip)
         @food_cost = FoodCost.create(recipe_id: recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: 100000, note:synonym)
-        return quantity_unit
+        return [quantity_unit, quantity, unit]
       end
 
       unit = quantity_unit[2]
