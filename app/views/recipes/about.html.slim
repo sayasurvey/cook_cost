@@ -1,5 +1,9 @@
 .container.col-sm-12.px-2
   = render 'recipes/new'
+  .go-rakuten-recipe.mx-auto align="center"
+    = link_to 'https://recipe.rakuten.co.jp/', class: 'btn btn-rakuten', target: :_brank do
+      i.fas.fa-utensils
+      | 楽天レシピへ
   .about.layer.layer-about
     h1.p-2.text-center
       |ABOUT

@@ -1,7 +1,6 @@
 module RakutenRecipeScrapes
   require 'open-uri'
   require 'nokogiri'
-  require 'csv'
   
   def scrape_rakuten_recipes(url)
     charset = nil
