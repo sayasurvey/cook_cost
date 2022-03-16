@@ -20,6 +20,7 @@
  @import "footer";
  @import "recipes";
  @import "pages";
+ @import "hoge";
 
 
 body{
@@ -39,4 +40,11 @@ a{
 
 h1{
   color: #FFB800;
+}
+
+h5{
+  color: #FFB800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
