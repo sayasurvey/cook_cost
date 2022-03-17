@@ -1,4 +1,5 @@
 .categories_list.m-3
   h1.text-center カテゴリー一覧
-  = link_to '人気メニュー', categories_populer_menu_path, class: 'col-sm-4 btn category-btn'
+  - @categories.each do |category|
+    = link_to category.name, category_path(category.id), class: 'col-sm-4 btn category-btn'
   

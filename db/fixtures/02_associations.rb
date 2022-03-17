@@ -34,3 +34,14 @@ csv.each do |synonym|
     s.name = synonym[2]
   end
 end
+
+csv = CSV.read("#{data_dir}ChildCategories.csv", headers: true)
+
+csv.each do |child_categories|
+  ChildCategory.seed(:id) do |s|
+    s.id  = child_categories[0]
+    s.category = Category.find_by(name: child_categories[1])
+    s.name = child_categories[2]
+    s.rakuten_id = child_categories[3]
+  end
+end

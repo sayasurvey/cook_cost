@@ -1,57 +1,101 @@
-document.getElementById("30-300").onclick = function() {
-    GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-300');
-    ScrollWindow("recipe_list");
-}
+const api_url = 'https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId='
 
-document.getElementById("30-301").onclick = function() {
-    GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-301');
-    ScrollWindow("recipe_list");
-}
+// document.getElementById("30-300").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-300');
+//     ScrollWindow("recipe_list");
+// }
 
-document.getElementById("30-302").onclick = function() {
-    GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-302');
-    ScrollWindow("recipe_list");
-}
+// document.getElementById("30-301").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-301');
+//     ScrollWindow("recipe_list");
+// }
 
-document.getElementById("30-307").onclick = function() {
-    GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-307');
-    ScrollWindow("recipe_list");
-}
+// document.getElementById("30-302").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-302');
+//     ScrollWindow("recipe_list");
+// }
 
-document.getElementById("30-304").onclick = function() {
-    GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-304');
-    ScrollWindow("recipe_list");
-}
+// document.getElementById("30-303").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-303');
+//     ScrollWindow("recipe_list");
+// }
 
-document.getElementById("30-310").onclick = function() {
-    GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-310');
-    ScrollWindow("recipe_list");
-}
+// document.getElementById("30-304").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-304');
+//     ScrollWindow("recipe_list");
+// }
 
-document.getElementById("30-305").onclick = function() {
-    GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-305');
-    ScrollWindow("recipe_list");
-}
+// document.getElementById("30-307").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-307');
+//     ScrollWindow("recipe_list");
+// }
 
-document.getElementById("30-308").onclick = function() {
-    GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-308');
-    ScrollWindow("recipe_list");
-}
 
-document.getElementById("30-312").onclick = function() {
-    GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-312');
-    ScrollWindow("recipe_list");
-}
+// document.getElementById("30-309").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-309');
+//     ScrollWindow("recipe_list");
+// }
 
-document.getElementById("30-311").onclick = function() {
-    GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-311');
-    ScrollWindow("recipe_list");
-}
+// document.getElementById("30-310").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-310');
+//     ScrollWindow("recipe_list");
+// }
 
-document.getElementById("30-309").onclick = function() {
-    GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-309');
-    ScrollWindow("recipe_list");
-}
+// document.getElementById("30-311").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-311');
+//     ScrollWindow("recipe_list");
+// }
+
+// document.getElementById("31-319").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=31-319');
+//     ScrollWindow("recipe_list");
+// }
+
+// document.getElementById("31-320").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=31-320');
+//     ScrollWindow("recipe_list");
+// }
+
+// document.getElementById("31-323").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=31-323');
+//     ScrollWindow("recipe_list");
+// }
+
+// document.getElementById("31-326").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=31-326');
+//     ScrollWindow("recipe_list");
+// }
+
+// document.getElementById("31-327").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=31-327');
+//     ScrollWindow("recipe_list");
+// }
+
+// document.getElementById("31-329").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=31-329');
+//     ScrollWindow("recipe_list");
+// }
+
+// document.getElementById("31-333").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=31-333');
+//     ScrollWindow("recipe_list");
+// }
+
+// document.getElementById("31-335").onclick = function() {
+//     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=31-335');
+//     ScrollWindow("recipe_list");
+// }
+
+
+/* for ( var i = 300; i < 312; i++ ) {
+    if ( i == 305 || i == 306 || i == 308 ) {
+        continue;
+    }
+    document.getElementById("30-" + i).onclick = function() {
+        GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=30-' + i);
+        ScrollWindow("recipe_list");
+    }
+} */
 
 function GetRakutenApi(url) {
     document.getElementById('recipe_list').innerHTML = '';
