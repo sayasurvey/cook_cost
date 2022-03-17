@@ -8,7 +8,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery"
-import "./hoge"
+import "./categories"
 
 Rails.start()
 Turbolinks.start()

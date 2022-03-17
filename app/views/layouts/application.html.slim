@@ -7,7 +7,6 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag    'application' 
     - if Rails.env.production?
       = render 'layouts/google_analytics'
 
@@ -16,3 +15,4 @@ html
     = render 'shared/flash_message'
     = yield
     = render 'shared/footer'
+    = javascript_pack_tag    'application'

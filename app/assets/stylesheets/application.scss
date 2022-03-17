@@ -20,7 +20,7 @@
  @import "footer";
  @import "recipes";
  @import "pages";
- @import "hoge";
+ @import "categories";
 
 
 body{
@@ -43,8 +43,13 @@ h1{
 }
 
 h5{
-  color: #FFB800;
+  color: #ffbb00;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.btn{
+  border-radius: 8px;
+  text-align: center;
 }
