@@ -96,4 +96,15 @@ img {
 	border-color: white;
 	border-radius: 3px;
 	padding: 2px 0px;
+	font-size: 3.5vw;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.rakuten-recipe {
+	width: 100%;
+	display: inline-flex;
+  flex-direction: column;
+  align-items: center;
 }

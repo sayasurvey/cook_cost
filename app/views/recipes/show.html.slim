@@ -39,6 +39,12 @@
           th.text-right = '合計'
           th.text-right = @cost_sum.round(1)
   
+  .shere.my-2.text-center
+    = link_to "https://twitter.com/share?url=#{request.url}&text=#{@recipe.cuisine_name}を%0a%23CookCost で材料費を%0aシュミレーションした結果、%0a#{@cost_sum.round(1)}円でした。%0a詳細はこちら%0a%0a%23楽天レシピ%0a%23自炊%0a%23節約%0a",
+              class: 'btn', target: '_blank' do
+      i.fab.fa-twitter style='color: white;'
+      |　Twitterでシェア
+  
   .annotation.kakomi-tape
     span.title-tape = '注意'
     p ・品名に記号やアルファベットが入っているものは、<br>　うまく取得できない場合があります。

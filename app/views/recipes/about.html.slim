@@ -1,10 +1,12 @@
 .container.col-sm-12.px-2
   = render 'recipes/new'
-  .go-rakuten-recipe.mx-auto align="center"
-    = link_to 'https://recipe.rakuten.co.jp/', class: 'btn btn-rakuten', target: :_brank do
+  .rakuten-recipe.mx-auto
+    = link_to 'https://recipe.rakuten.co.jp/', class: 'btn btn-rakuten m-1', target: :_brank do
       i.fas.fa-utensils
       |　楽天レシピへ
-
+    = link_to categories_path, class: 'btn btn-rakuten m-1' do
+      i.fas.fa-tag
+      |　カテゴリーの人気レシピから探す
   .about.layer.layer-about
     h1.p-2.text-center
       |ABOUT
@@ -27,3 +29,9 @@
         |②電卓のアイコンをクリック
       .balloon2.how-to-three
         |③材料費が表示される
+
+  .shere.my-2.text-center
+    = link_to "https://twitter.com/share?url=#{ request.url }&text=自炊するとき、買った方が安いのか%0a%23材料費 はいくらかかるのか%0a気になったことはありませんか？%0a%23CookCost なら手軽にシュミレーションできる！%0a%0a%23楽天レシピ%0a%23自炊%0a%23節約%0a",
+              class: 'btn', target: '_blank' do
+      i.fab.fa-twitter style='color: white;'
+      |　Twitterでシェア

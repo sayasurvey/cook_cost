@@ -1,20 +1,23 @@
 .categories_list.m-3
   h1.text-center.mb-3 = @category.name
   - @child_categories.each do |child_category|
-    a.col-sm-4.btn.category-btn id="#{@category.rakuten_id}-#{child_category.rakuten_id}" =child_category.name
+    a.col-sm-4.btn.category-btn id="#{@category.rakuten_id}-#{child_category.rakuten_id}" onclick = "click_button()" =child_category.name
 
 .recipe_list
   ul#recipe_list.mt-2
 
+.credit.mx-auto
+  /! Rakuten Web Services Attribution Snippet FROM HERE
+  a href="https://webservice.rakuten.co.jp/" target="_blank"
+    img alt=("Rakuten Web Service Center") border="0" height="21" src="https://webservice.rakuten.co.jp/img/credit/200709/credit_22121.gif" title=("Rakuten Web Service Center") width="221" /
+  /! Rakuten Web Services Attribution Snippet TO HERE
 javascript:
-  window.onload = function(){
-    var child_categories = #{raw @child_categories.to_json};
-    for(var i = 0; i < child_categories.length; ++i) {
-      var category_code = 31 + "-" + child_categories[i].rakuten_id;
-      document.getElementById(category_code).onclick = function() {
-        GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1018227086092671411&categoryId=' + category_code);
-      }
-    }
+  function click_button(e){
+    var e = e || window.event;
+    var elem = e.target || e.srcElement;
+    var elemId = elem.id;
+    const APP_ID = gon.app_id
+    GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=' + APP_ID + '&categoryId=' + elemId);
   }
 
   function GetRakutenApi(url) {
