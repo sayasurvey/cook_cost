@@ -1,2 +1,4 @@
+- content_for(:title, "材料情報出力 | CookCost")
+
 = form_with url: food_costs_output_path(format: :csv), method: :get, local: true, html: {class: 'food_cost_data'} do
-  = submit_tag 'CSV出力', class: 'btn', id: 'csv_button', data: { disable_with: '処理中...'}
+  = submit_tag '材料情報CSV出力', class: 'btn', id: 'csv_button', data: { disable_with: '処理中...'}
