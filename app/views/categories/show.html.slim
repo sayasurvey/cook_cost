@@ -18,34 +18,40 @@ javascript:
     var elemId = elem.id;
     const APP_ID = gon.app_id
     GetRakutenApi('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=' + APP_ID + '&categoryId=' + elemId);
+    sleep(1000)
   }
 
   function GetRakutenApi(url) {
     document.getElementById('recipe_list').innerHTML = '';
     function updateText(data) {
-        for (let i = 0; i < data.length; i++) {
-            const insertHtml = `
-            <div class="cp_card02">
-                <div class="photo photo1">
-                    <a href="${data[i].recipeUrl}" target="_blank">
-                        <img src="${data[i].foodImageUrl}" alt="${data[i].recipeTitle} 画像">
-                    </a>
-                </div>
-                    <div class="description">
-                        <h5>${data[i].recipeTitle}</h5>
-                        <p>${data[i].recipeMaterial}</p>
-                        <a class="btn link-btn" rel="nofollow" data-method="post" href="/recipes/scrape?url=${data[i].recipeUrl}">材料費をみる</a>
-                    </div>
-                </div>
+      for (let i = 0; i < data.length; i++) {
+        const insertHtml = `
+        <div class="cp_card02">
+          <div class="photo photo1">
+            <a href="${data[i].recipeUrl}" target="_blank">
+              <img src="${data[i].foodImageUrl}" alt="${data[i].recipeTitle} 画像">
+            </a>
+          </div>
+            <div class="description">
+              <h5>${data[i].recipeTitle}</h5>
+              <p>${data[i].recipeMaterial}</p>
+              <a class="btn link-btn" rel="nofollow" data-method="post" href="/recipes/scrape?url=${data[i].recipeUrl}">材料費をみる</a>
             </div>
-            `;
-            $('#recipe_list').append(insertHtml);
-        }
+          </div>
+        </div>
+        `;
+        $('#recipe_list').append(insertHtml);
+      }
     }
 
     // API取得
     $.getJSON(url, (data) => {
-        const recipes = data.result;
-        updateText(recipes);
+      const recipes = data.result;
+      updateText(recipes);
     });
+  }
+
+  function sleep(waitMsec) {
+    var startMsec = new Date();
+    while (new Date() - startMsec < waitMsec);
   }
