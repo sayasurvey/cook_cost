@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   post 'recipes/scrape'
-  get 'categories/populer_menu', to: 'categories#populer_menu'
 
   resources :recipes
   resources :contacts, only: [:new, :create]
