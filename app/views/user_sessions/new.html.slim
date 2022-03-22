@@ -1,15 +1,18 @@
-- content_for(:title, 'ログイン|CATching')
-.content.m-5
-  h1.title.p-4 ログイン
-  .row
-    .col-lg-8.offset-lg-2.py-5
-      = form_with url: login_path, method: :post, local: true do |f|
-        .form-group
-          = f.label :email, 'メールアドレス'
-          = f.email_field :email, class: 'form-control'
-        .form-group
-          = f.label :password, 'パスワード'
-          = f.password_field :password, class: 'form-control'
-        = f.submit 'ログイン', class: 'btn-flat-border'
-      .text-center
-        = link_to '新規登録', new_user_path
+- content_for(:title, 'ログイン|CookCost')
+
+.form-wrapper.col-sm-12
+  h1 ログイン
+  = form_with url: login_path, method: :post, local: true do |f|
+    .form-item
+      = f.email_field :email, placeholder: 'メールアドレス'
+    .form-item
+      = f.password_field :password, placeholder: 'パスワード'
+    .button-panel
+      = f.submit 'ログイン', class: 'button login'
+      = link_to auth_at_provider_path(:provider => :google), class: 'google' do
+        i.fab.fa-google
+        |　Googleでログイン
+      = link_to auth_at_provider_path(:provider => :twitter), class: 'twitter' do
+        i.fab.fa-twitter
+        |　Twitterでログイン
+      = link_to 'ユーザー登録', new_user_path, class: 'new-user'

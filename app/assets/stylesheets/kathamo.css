@@ -236,7 +236,7 @@ th {
 .container { 
   position: relative; 
   margin-right: auto; 
-  margin-left: auto; 
+  margin-left: auto;
 }
 
 .container:before, 

@@ -3,4 +3,19 @@ header
     = link_to root_path do
       h1.title-text.text-center
         | CookCost
+  .hamburger-menu
+    input#menu-btn-check type="checkbox" /
+    label.menu-btn for="menu-btn-check"
+      span
 
+    .menu-content
+      ul
+        li
+          -if logged_in?
+            = link_to 'ログアウト', logout_path, method: :delete
+          -else
+            = link_to 'ログイン', login_path
+        li
+          = link_to '楽天レシピを開く', 'https://recipe.rakuten.co.jp/', target: :_brank
+        li
+          = link_to 'カテゴリーの人気レシピから探す', categories_path

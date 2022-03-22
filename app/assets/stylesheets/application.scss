@@ -21,39 +21,48 @@
  @import "recipes";
  @import "pages";
  @import "categories";
+ @import "users";
 
 
-body{
+body {
   display: flex;
   flex-flow: column;
   min-height: 100vh;
-  h1{
+  h1 {
     margin: 0;
   }
 }
 
-a{
+a {
   color: inherit;
   text-decoration: none;
   cursor: default;
 }
 
-h1{
+.container {
+  max-width: 500px;
+}
+
+h1 {
   color: #FFB800;
 }
 
-h5{
+h5 {
   color: #ffbb00;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.btn{
+.btn {
   border-radius: 8px;
   text-align: center;
 }
 
 a:hover {
   color: gray;
+}
+
+.twitter {
+  background: #80dfda;
 }
