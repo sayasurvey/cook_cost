@@ -1,14 +1,14 @@
 - content_for(:title, "レシピ一覧 | CookCost")
 
 .categories_list.m-3
-  h1.text-center.mb-3 = @category.name
+  h1.text-center.mb-2 = @category.name
   - @child_categories.each do |child_category|
     a.col-sm-4.btn.category-btn id="#{@category.rakuten_id}-#{child_category.rakuten_id}" onclick = "click_button()" =child_category.name
 
 .recipe_list
   ul#recipe_list.mt-2
 
-.credit.mx-auto
+.credit.text-center
   /! Rakuten Web Services Attribution Snippet FROM HERE
   a href="https://webservice.rakuten.co.jp/" target="_blank"
     img alt=("Rakuten Web Service Center") border="0" height="21" src="https://webservice.rakuten.co.jp/img/credit/200709/credit_22121.gif" title=("Rakuten Web Service Center") width="221" /
