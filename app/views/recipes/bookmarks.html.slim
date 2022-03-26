@@ -1,0 +1,7 @@
+- content_for(:title, 'ブックマーク一覧 | CookCost')
+.content
+  h1.text-center.m-3 ブックマーク一覧
+  - if @recipes.present?
+    = render @recipes
+  - else
+    p ブックマークはありません

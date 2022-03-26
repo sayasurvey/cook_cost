@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   get 'oauths/callback'
   post 'recipes/scrape'
 
-  resources :recipes do
+  resources :recipes, only: %i[index new show] do
     resource :bookmarks, only: [:create, :destroy]
+    get :bookmarks, on: :collection
   end
   resources :contacts, only: [:new, :create]
   resources :categories

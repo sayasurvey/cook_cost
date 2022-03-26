@@ -23,7 +23,7 @@ module RakutenRecipeScrapes
   end
 
   def register_recipe_from_html(doc, html_path)
-    cuisine_name = doc.xpath("#{html_path}div[2]").text.strip
+    cuisine_name = doc.xpath("#{html_path}div[2]").text.strip.match(/(.*) レシピ・作り方/)[1]
     originator = doc.xpath("#{html_path}div[3]/div/div[2]/div[2]/a").text.strip
     how_many = doc.xpath("#{html_path}div[3]/section/h2[@class='contents_title contents_title_mb']").text.strip
     @recipe = Recipe.find_or_initialize_by(recipe_url: params[:url])

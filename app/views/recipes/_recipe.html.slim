@@ -1,0 +1,6 @@
+.pb-btn style='z-index: 1;'
+  =link_to recipe_path(recipe.id) do
+    span.pb-btn__text =recipe.cuisine_name
+
+div id="bookmark_button_#{recipe.id}" class='bookmark' style='position: relative; z-index: 10; margin-right: 13vw; margin-top: -50px'
+  = render "bookmarks/bookmark", recipe: recipe

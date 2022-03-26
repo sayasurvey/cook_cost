@@ -215,5 +215,48 @@ th {
 .bookmark {
   float: right;
   margin-right: 6%;
-  font-size: 140%
+  font-size: 140%;
+  color: #ffc400;
+}
+
+/* リンクカード */
+.pb-btn{
+  margin: 10px auto;
+  width: 90%;
+  position:relative;
+}
+
+.pb-btn a{
+  display:block;
+  color:#333 !important;
+  border:2px solid #91c13e;
+  font-weight:600;
+  position:relative;
+  transition:all 0.2s;
+  text-decoration:none;
+  padding: 1.3em 1.3em 1.2em;
+  font-size:14px !important;
+  background:#F2F8E8;
+}
+
+.pb-btn .pb-btn__text{
+  max-width: 90%;
+  display: block;
+  line-height:1.8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pb-btn a:after{
+  position: absolute;
+  content: "";
+  display: inline-block;
+  right: 7%;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  -webkit-transform: rotate(45deg) translateY(-50%);
+  transform: rotate(45deg) translateY(-50%);
+  border-top: 3px solid #91c13e;
+  border-right: 3px solid #91c13e;
 }

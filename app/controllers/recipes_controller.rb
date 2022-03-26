@@ -15,19 +15,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
-  # GET /recipes/1/edit
-  def edit; end
-
-  # POST /recipes or /recipes.json
-  def create; end
-
-  # PATCH/PUT /recipes/1 or /recipes/1.json
-  def update; end
-
-  # DELETE /recipes/1 or /recipes/1.json
-  def destroy; end
-
   def about; end
+
+  def bookmarks
+    @recipes = current_user.bookmark_recipes.order(created_at: :desc)
+  end
 
   def scrape
     if params[:url].match(/([https:\/\/recipe.rakuten.co.jp\/recipe\/]+[0-9]{10}\/)/)

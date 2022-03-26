@@ -16,6 +16,12 @@ header
           -else
             = link_to 'ログイン', login_path
         li
+          = link_to 'TOPページ', root_path
+        li
           = link_to '楽天レシピを開く', 'https://recipe.rakuten.co.jp/', target: :_brank
         li
           = link_to 'カテゴリーの人気レシピから探す', categories_path
+        li
+          = link_to 'URLから探す', root_path
+        li
+          = link_to 'ブックマーク一覧', bookmarks_recipes_path

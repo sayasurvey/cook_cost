@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
   has_many :recipes, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_recipes, through: :bookmarks, source: :recipe
 
   accepts_nested_attributes_for :authentications
 

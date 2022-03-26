@@ -1,4 +1,4 @@
 - if recipe.bookmarked_by?(current_user)
-  = link_to "", recipe_bookmarks_path(recipe), method: :delete, remote: true, class: "fas fa-bookmark"
+  = link_to "", recipe_bookmarks_path(recipe), method: :delete, remote: true, class: "fas fa-star"
 - else
-  = link_to "", recipe_bookmarks_path(recipe), method: :post, remote: true, class: "far fa-bookmark"
+  = link_to "", recipe_bookmarks_path(recipe), method: :post, remote: true, class: "far fa-star"
