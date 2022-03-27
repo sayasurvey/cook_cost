@@ -1,0 +1,8 @@
+- content_for(:title, 'レシピ一覧 | CookCost')
+.content
+  h1.text-center.m-3 レシピ一覧
+  - if @recipes.present?
+    = render @recipes
+  - else
+    p 登録されたレシピはありません
+  = paginate @recipes

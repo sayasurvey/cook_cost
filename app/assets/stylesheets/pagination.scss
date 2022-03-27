@@ -1,0 +1,44 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+
+.pagination a {
+  display: inline-block;
+  color: black;
+  border-bottom: 3px solid #dedede;
+  text-decoration: none;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+}
+
+
+.pagination i {
+  line-height: 25px;
+}
+
+.pagination .active{
+  line-height:25px;
+  text-align:center;
+  border-bottom: 3px solid #f09fa1;
+  width: 25px;
+  height: 26.5px;
+}
+
+.pagination a:hover {
+  border-bottom: 3px solid #efc2c2;
+}
+
+.pagination .disabled a {
+  pointer-events: none;
+  color: #ccc;
+}
+
+.pagination .disabled a:hover {
+  background-color: initial;
+  color: #ccc;
+}

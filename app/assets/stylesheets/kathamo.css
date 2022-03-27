@@ -1676,6 +1676,10 @@ nav *[data-role="button"]:hover {
   margin-left: 3rem !important;
 }
 
+.mr-5 {
+  margin-right: 3rem !important;
+}
+
 .mx-auto {
   margin-right: auto !important;
   margin-left: auto !important;

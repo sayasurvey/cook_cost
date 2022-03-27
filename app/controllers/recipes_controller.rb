@@ -2,7 +2,10 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[ show edit update destroy ]
 
   # GET /recipes or /recipes.json
-  def index; end
+  def index
+    @recipes = Recipe.find_by_sql("SELECT r.*, sum(f.cost) as cook_cost FROM recipes as r LEFT OUTER JOIN food_costs as f ON r.id = f.recipe_id GROUP BY r.id ORDER BY r.created_at DESC")
+    @recipes = Kaminari.paginate_array(@recipes).page(params[:page])
+  end
 
   # GET /recipes/1 or /recipes/1.json
   def show
@@ -19,6 +22,7 @@ class RecipesController < ApplicationController
 
   def bookmarks
     @recipes = current_user.bookmark_recipes.order(created_at: :desc)
+    @recipes = @recipes.page(params[:page])
   end
 
   def scrape
