@@ -3,13 +3,19 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.find_by_sql("SELECT r.*, sum(f.cost) as cook_cost FROM recipes as r LEFT OUTER JOIN food_costs as f ON r.id = f.recipe_id GROUP BY r.id ORDER BY r.created_at DESC")
-    @recipes = Kaminari.paginate_array(@recipes).page(params[:page])
+    @recipes = Recipe.left_outer_joins(:food_costs)
+                     .group("recipes.id")
+                     .select("recipes.*, sum(food_costs.cost) as cook_cost")
+                     .order("recipes.created_at DESC")
+                     .page(params[:page])
   end
 
   # GET /recipes/1 or /recipes/1.json
   def show
-    @food_costs = FoodCost.where(recipe_id: params[:id]).joins(price: :ingredient).select("ingredients.name, prices.purchase_price, prices.quantity, prices.unit_id, food_costs.id, food_costs.quantity_unit, food_costs.cost, food_costs.note").order(id: :asc)
+    @food_costs = FoodCost.where(recipe_id: params[:id])
+                          .joins(price: :ingredient)
+                          .select("ingredients.name, prices.purchase_price, prices.quantity, prices.unit_id, food_costs.id, food_costs.quantity_unit, food_costs.cost, food_costs.note")
+                          .order(id: :asc)
     @cost_sum = @food_costs.sum(:cost)
   end
 
@@ -21,8 +27,12 @@ class RecipesController < ApplicationController
   def about; end
 
   def bookmarks
-    @recipes = current_user.bookmark_recipes.order(created_at: :desc)
-    @recipes = @recipes.page(params[:page])
+    @recipes = current_user.bookmark_recipes
+                           .left_outer_joins(:food_costs)
+                           .group("recipes.id")
+                           .select("recipes.*, sum(food_costs.cost) as cook_cost")
+                           .order("recipes.created_at DESC")
+                           .page(params[:page])
   end
 
   def scrape
