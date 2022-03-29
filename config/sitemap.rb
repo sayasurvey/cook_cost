@@ -15,14 +15,19 @@ SitemapGenerator::Sitemap.create do
   #
   # Examples:
   #
-  Add '/recipes'
-  
-    add recipes_path, :priority => 0.7, :changefreq => 'daily'
-  
-  Add all recipes:
-  
+  # Add '/articles'
+  #
+    add recipes_path, :priority => 0.7, :changefreq => 'always'
+    add root_path,  :priority => 1.0, :changefreq => 'never'
+    add categories_path, :priority => 0.7, :changefreq => 'monthly'
+  #
+  # Add all articles:
+  #
     Recipe.find_each do |recipe|
       add recipe_path(recipe), :lastmod => recipe.updated_at
     end
 
+    Category.find_each do |category|
+      add category_path(category), :lastmod => category.updated_at
+    end
 end
