@@ -1,13 +1,15 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[ show edit update destroy ]
+  before_action :require_login, only: %i[ bookmarks ]
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.left_outer_joins(:food_costs)
+    @q = Recipe.left_outer_joins(:food_costs)
                      .group("recipes.id")
                      .select("recipes.*, sum(food_costs.cost) as cook_cost")
                      .order("recipes.created_at DESC")
-                     .page(params[:page])
+                     .ransack(params[:q])
+    @recipes = @q.result(distinct: true).page(params[:page])
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -27,12 +29,13 @@ class RecipesController < ApplicationController
   def about; end
 
   def bookmarks
-    @recipes = current_user.bookmark_recipes
-                           .left_outer_joins(:food_costs)
-                           .group("recipes.id")
-                           .select("recipes.*, sum(food_costs.cost) as cook_cost")
-                           .order("recipes.created_at DESC")
-                           .page(params[:page])
+    @q = current_user.bookmark_recipes
+                     .left_outer_joins(:food_costs)
+                     .group("recipes.id")
+                     .select("recipes.*, sum(food_costs.cost) as cook_cost")
+                     .order("recipes.created_at DESC")
+                     .ransack(params[:q])
+    @recipes = @q.result(distinct: true).page(params[:page])
   end
 
   def scrape

@@ -4,11 +4,14 @@
   = render 'recipes/new'
   .rakuten-recipe.mx-auto
     = link_to 'https://recipe.rakuten.co.jp/', class: 'btn btn-rakuten m-1', target: :_brank do
-      i.fas.fa-utensils
-      |　楽天レシピへ
+      i.fas.fa-utensils.float-left.top-btn-icon
+      |楽天レシピへ
     = link_to categories_path, class: 'btn btn-rakuten m-1' do
       i.fas.fa-tag
       |　カテゴリーの人気レシピから探す
+    = link_to recipes_path, class: 'btn btn-rakuten m-1' do
+      i.fas.fa-drumstick-bite.float-left.top-btn-icon
+      |登録済みレシピから探す
   .about.layer.layer-about
     h1.p-2.text-center
       |ABOUT

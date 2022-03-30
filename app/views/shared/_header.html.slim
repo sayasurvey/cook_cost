@@ -25,5 +25,6 @@ header
           = link_to 'URLから探す', root_path
         li
           = link_to 'レシピ一覧', recipes_path
-        li
-          = link_to 'ブックマーク一覧', bookmarks_recipes_path
+        -if logged_in?
+          li
+            = link_to 'ブックマーク一覧', bookmarks_recipes_path

@@ -1,8 +1,14 @@
 - content_for(:title, 'ブックマーク一覧 | CookCost')
+
 .content
   h1.text-center.m-3 ブックマーク一覧
+  div align="center"
+    = search_form_for @q, url:bookmarks_recipes_path do |f|
+      = f.search_field :cuisine_name_cont, placeholder: 'レシピ名', style: 'width: 65%;'
+      = f.button type:"submit", style: 'background-color: #FFB800; border-color: #FFB800;' do
+          i.fa.fa-search.icon
   - if @recipes.present?
     = render @recipes
   - else
-    p ブックマークはありません
+    p.ms-3 ブックマークはありません
   = paginate @recipes
