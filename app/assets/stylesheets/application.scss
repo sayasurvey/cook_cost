@@ -15,7 +15,7 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
  @import "reset";
- @import "kathamo";
+ @import "bootstrap";
  @import "header";
  @import "footer";
  @import "recipes";
@@ -66,4 +66,5 @@ a:hover {
 
 .twitter {
   background: #80dfda;
+  display: inline;
 }

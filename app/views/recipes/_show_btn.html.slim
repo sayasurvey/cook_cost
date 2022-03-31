@@ -4,5 +4,5 @@
     i.fab.fa-twitter.text-white
     |　Twitterでシェア
 div align="center"
-  <a class="btn #{" ms-5" if logged_in?}" rel="nofollow" data-method="post" href="/recipes/scrape?url=#{@recipe.recipe_url}">材料費を更新する</a>
+  <a class="btn" rel="nofollow" data-method="post" href="/recipes/scrape?url=#{@recipe.recipe_url}">材料費を更新する</a>
 / #{" ms-4" if logged_in?}

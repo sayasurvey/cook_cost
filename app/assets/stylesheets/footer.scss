@@ -1,4 +1,7 @@
 footer {
   margin-top: auto;
   background-color: #FFB800;
+  a {
+    font-size: clamp(2px, 4vw, 20px);
+  }
 }

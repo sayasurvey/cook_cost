@@ -91,6 +91,7 @@ img {
 
 .link-btn {
   position: absolute;
+	font-size: clamp(7px, 2.3vw, 13px);
   bottom: 0px;
   right: 10px
 }
@@ -100,7 +101,7 @@ img {
 	border-color: white;
 	border-radius: 3px;
 	padding: 2px 0px;
-	font-size: 3.5vw;
+	font-size: clamp(7px, 3.5vw, 15px);
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -111,4 +112,8 @@ img {
 	display: inline-flex;
   flex-direction: column;
   align-items: center;
+}
+
+ul{
+	padding: 0px 13px;
 }

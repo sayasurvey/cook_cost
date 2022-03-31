@@ -106,11 +106,11 @@
 
 td {
   line-height: 70%;
-  font-size: 4vw;
+  font-size: clamp(2px, 4vw, 25px);
 }
 
 td span {
-  font-size: 2vw;
+  font-size: clamp(2px, 2vw, 15px);
 }
 
 .kakomi-tape {
@@ -196,6 +196,10 @@ table {
   width: 300px;
 }
 
+.text-gray{
+  color: gray;
+}
+
 .container{
   padding: 0px;
 }
@@ -205,7 +209,7 @@ th {
 }
 
 #recipe_url {
-  font-size: 3.7vw;
+  font-size: clamp(3px, 3.3vw, 19px);
 }
 
 .annotation{
@@ -223,7 +227,7 @@ th {
 .bookmark {
   float: right;
   margin-right: 6%;
-  margin-top: -5px;
+  margin-top: 2px;
   font-size: 140%;
   color: #ffc400;
 }
@@ -272,4 +276,169 @@ th {
 
 .margin-left-12 {
   margin-left: 12%;
+}
+
+.cuisine_name{
+  font-size: clamp(3px, 5vw, 20px);
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table > caption {
+  padding-top: 8px;
+  padding-right: 13px;
+  padding-bottom: 8px;
+  padding-left: 13px;
+}
+
+table > caption[data-position="top"] {
+  caption-side: top;
+}
+
+table > caption[data-position="bottom"] {
+  caption-side: bottom;
+}
+
+table > caption:before {
+  content: attr(data-prefix);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+thead {
+  border: 1px solid #95a5a6;
+}
+
+tbody {
+  border-right: 1px solid #95a5a6;
+  border-bottom: 1px solid #95a5a6;
+  border-left: 1px solid #95a5a6;
+}
+
+tr {
+  border-bottom: 1px solid #ecf0f1;
+}
+
+tr:last-child {
+  border-bottom: none;
+}
+
+th {
+  padding-top: 8px;
+  padding-right: 13px;
+  padding-bottom: 8px;
+  padding-left: 13px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 2.333333333;
+  text-align: left;
+  color: #95a5a6;
+  background-color: #ecf0f1;
+}
+
+td {
+  padding-top: 8px;
+  padding-right: 13px;
+  padding-bottom: 8px;
+  padding-left: 13px;
+  font-weight: 400;
+  text-align: left;
+  color: #7f8c8d;
+}
+
+.table-no-border,
+.table-no-border * {
+  border: none;
+  background-color: transparent;
+}
+
+.table-striped tr:nth-of-type(even) {
+  background: #ecf0f1;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #ecf0f1;
+}
+
+.table-responsive {
+  max-width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.table-responsive table {
+  margin: 0;
+  border: none;
+}
+
+@media (max-width: 767px) {
+
+  .table-responsive {
+    border: 1px solid #95a5a6;
+  }
+
+  .table-responsive caption,
+  .table-responsive caption[data-position="top"] {
+    border-bottom: 1px solid #95a5a6;
+    background-color: #ecf0f1;
+  }
+
+  .table-responsive caption[data-position="bottom"] {
+    border-top: 1px solid #95a5a6;
+    background-color: #ecf0f1;
+  }
+
+  .table-striped caption {
+    background-color: transparent;
+  }
+
+  .table-responsive thead {
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid #95a5a6;
+    border-left: none;
+  }
+
+  .table-responsive tbody {
+    border: none;
+  }
+
+  .table-responsive .table-no-border thead,
+  .table-responsive .table-no-border tbody {
+    border: none;
+  }
+
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 8px;
+  width: 55%;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: #ecf0f1;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background-color: #bdc3c7;
 }

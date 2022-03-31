@@ -1,15 +1,16 @@
 - content_for(:title, "#{@recipe.cuisine_name} | CookCost")
 
-.container
-  .kakomi-tape
-    span.title-tape = '引用元'
-    h3.title = @recipe.cuisine_name
-    =link_to "#{@recipe.recipe_url}", @recipe.recipe_url, id: 'recipe_url'
-    p.text-right = "by#{@recipe.originator}"
+.kakomi-tape
+  span.title-tape = '引用元'
+  h3.cuisine_name = @recipe.cuisine_name
+  =link_to "#{@recipe.recipe_url}", @recipe.recipe_url, id: 'recipe_url'
+  p.text-end.mb-2 = "by#{@recipe.originator}"
 
-  .table.mx-3
+p.text-center.text-gray style='margin: 0px;' = @recipe.how_many
+
+div align='center'
+  .table.mx-3 style='width: 90%;'
     table
-      caption = @recipe.how_many
       thead
         tr
           th.text-center 材料名
@@ -31,22 +32,22 @@
                   span = "@#{food_cost.purchase_price}円/#{food_cost.quantity.to_i}#{Unit.find_by(id: food_cost.unit_id).unit}"
                 - else
                   span = "@#{food_cost.purchase_price}円/#{food_cost.quantity}#{Unit.find_by(id: food_cost.unit_id).unit}"
-            td.text-right#quantity_unit style="width: 32rem" = food_cost.quantity_unit
-            td.text-right style="width: 25%" = food_cost.cost.round(1)
+            td.text-end#quantity_unit style="width: 27rem" = food_cost.quantity_unit
+            td.text-end style="width: 25%" = food_cost.cost.round(1)
       tfoot
         tr
           th
-          th.text-right = '合計'
-          th.text-right = @cost_sum.round(1)
+          th.text-end = '合計'
+          th.text-end = @cost_sum.round(1)
 
     -if logged_in?
       div id="bookmark_button_#{@recipe.id}" class='bookmark'
         = render "bookmarks/bookmark", recipe: @recipe
     = render 'recipes/show_btn'
-  
-  .annotation.kakomi-tape
-    span.title-tape = '注意'
-    p ・品名に記号やアルファベットが入っているものは、<br>　うまく取得できない場合があります。
-    p ・適量やお好みなど使用量がはっきりしないものは<br>　計算できません。
-    p ・使用量に単位がないものは計算できません。
-    p ・登録がない食品は、順次登録致します。
+
+.annotation.kakomi-tape
+  span.title-tape = '注意'
+  p ・品名に記号やアルファベットが入っているものは、<br>　うまく取得できない場合があります。
+  p ・適量やお好みなど使用量がはっきりしないものは<br>　計算できません。
+  p ・使用量に単位がないものは計算できません。
+  p ・登録がない食品は、順次登録致します。

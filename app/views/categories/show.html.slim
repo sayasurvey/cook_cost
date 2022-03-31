@@ -3,7 +3,7 @@
 .categories_list.m-3
   h1.text-center.mb-2 = @category.name
   - @child_categories.each do |child_category|
-    a.col-sm-4.btn.category-btn id="#{@category.rakuten_id}-#{child_category.rakuten_id}" onclick = "click_button()" =child_category.name
+    a.col-4.col-sm-4.btn.category-btn id="#{@category.rakuten_id}-#{child_category.rakuten_id}" onclick = "click_button()" =child_category.name
 
 .recipe_list
   ul#recipe_list.mt-2
