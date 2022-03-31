@@ -3,18 +3,19 @@
 .container.col-sm-12
   h1.title.text-center.my-2 お問い合わせ確認
 
-  .table.m-3
-    table
-      tbody
-        tr
-          th お名前
-          td.px-2= @contact.name
-        tr
-          th メールアドレス
-          td.px-2= @contact.email
-        tr
-          th メッセージ
-          td.px-2.message= @contact.message
+  .m-3
+    .table
+      table
+        tbody
+          tr
+            th お名前
+            td.px-2= @contact.name
+          tr
+            th メールアドレス
+            td.px-2= @contact.email
+          tr
+            th メッセージ
+            td.px-2.message= @contact.message
 
   .form.mx-2
     = form_for(@contact) do |f|
