@@ -19,7 +19,7 @@ module RakutenRecipeScrapes
   end
 
   def full_to_half(str)
-    str.tr("０-９ａ-ｚＡ-Ｚ．（）／＠−", "0-9a-zA-Z.()/@-")
+    str.tr("０-９ａ-ｚＡ-Ｚ．（）／〜＠−", "0-9a-zA-Z.()/~@-")
   end
 
   def register_recipe_from_html(doc, html_path)
