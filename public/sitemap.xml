@@ -9,193 +9,483 @@
 
 <url>
   <loc>https://www.cookcost.com/</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/login</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/categories</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/pages/terms_of_use</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/pages/privacy_policy</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/contacts/new</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/users/new</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/categories/1</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/categories/2</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/categories/3</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/categories/4</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/categories/5</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/categories/6</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/categories/7</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/categories/8</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/categories/9</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/categories/10</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/categories/11</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
   <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/categories/12</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/categories/13</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/78</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/77</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/76</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/75</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/74</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/73</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/72</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/71</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/70</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/69</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/68</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/67</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/66</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/65</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/64</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/63</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/62</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/61</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/60</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/59</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes?page=2</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes?page=3</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes?page=4</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/58</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/57</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/56</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/55</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/54</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/53</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/52</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/51</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/50</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/49</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/48</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/47</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/46</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/45</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/44</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/43</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/42</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/41</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/40</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/39</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/38</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/37</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/36</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/35</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/34</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/33</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/32</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/31</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/30</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/29</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/28</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/27</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/26</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/25</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/24</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/23</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/22</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/21</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/20</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/19</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/18</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/17</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/16</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/15</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.cookcost.com/recipes/14</loc>
-  <lastmod>2022-03-29T14:34:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/13</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/7</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/6</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/5</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/4</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/3</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.cookcost.com/recipes/1</loc>
+  <lastmod>2022-04-03T16:45:13+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 
 
