@@ -33,42 +33,46 @@ module RakutenRecipeScrapes
 
   def register_ingredients_from_html(doc, html_path, url)
     recipe_id = Recipe.find_by(recipe_url: params[:url]).id
-    #説明を書く　マジックナンバー100000を定数にする
-    FoodCost.where(recipe_id: recipe_id, price_id: 100000).destroy_all
+    #そのレシピを過去に作成したときにFoodCostにprice_idで未登録(100000)があれば、その情報を全て削除
+    FoodCost.where(recipe_id: recipe_id, price_id: Constants::NO_REGISTRATION).destroy_all
     doc.xpath("#{html_path}div[3]/section/ul").css('li').map do |node|
-      synonym = node.css('.recipe_material__item_name').text.strip.match(Constants::JAPANESE_ONLY)[1]
-      if synonym == ""
-        synonym = node.css('.recipe_material__item_name').text.strip
-      end
-      quantity_unit = full_to_half(node.css('.recipe_material__item_serving').text.strip)
+      synonyms = node.css('.recipe_material__item_name').text.strip.match(Constants::JAPANESE_ONLY)[1].split("・")
+      synonyms.each do |synonym|
+        if synonym == ""
+          synonym = node.css('.recipe_material__item_name').text.strip
+        end
 
-      if Synonym.find_by(name: synonym)
-        ingredient = Ingredient.includes(:synonyms).find_by(synonyms: { name: synonym } ).name
-      else
-        @food_cost = FoodCost.create(recipe_id: recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: 100000, note:synonym)
-        next
-      end
+        quantity_unit = full_to_half(node.css('.recipe_material__item_serving').text.strip)
 
-      quantity_unit, quantity, unit = regular_expression(node, quantity_unit, recipe_id, synonym)
-      next if unit == nil
-
-      if unit == Ingredient.find_by(name: ingredient).base_unit
-        amount = quantity
-      else
-        if IngredientUnit.includes(:ingredient, :unit).find_by(ingredient: { name: ingredient }, unit: { unit: unit })
-          ratio = IngredientUnit.includes(:ingredient, :unit).find_by(ingredient: { name: ingredient }, unit: { unit: unit }).ratio.to_f
-          amount = ratio * quantity
+        if Synonym.find_by(name: synonym)
+          ingredient = Ingredient.includes(:synonyms).find_by(synonyms: { name: synonym } ).name
         else
-          @food_cost = FoodCost.create(recipe_id: recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: 100000, note:synonym)
+          #Synonymにsynonymが登録なければFoodCostにprice_idで未登録(100000)で登録
+          @food_cost = FoodCost.create(recipe_id: recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: Constants::NO_REGISTRATION, note:synonym)
           next
         end
-      end
 
-      cost = amount * Price.includes(:ingredient).find_by(ingredient: { name: ingredient }).one_base_unit_price
-      @food_cost = FoodCost.find_or_initialize_by(recipe_id: recipe_id, quantity_unit: quantity_unit, price_id: Price.includes(:ingredient).find_by(ingredient: { name: ingredient }).id)
-      #失敗したらエラーにする
-      @food_cost.assign_attributes(cost: cost, note: '')
-      @food_cost.save
+        quantity_unit, quantity, unit = regular_expression(node, quantity_unit, recipe_id, synonym)
+        next if unit == nil
+
+        if unit == Ingredient.find_by(name: ingredient).base_unit
+          amount = quantity
+        else
+          if IngredientUnit.includes(:ingredient, :unit).find_by(ingredient: { name: ingredient }, unit: { unit: unit })
+            ratio = IngredientUnit.includes(:ingredient, :unit).find_by(ingredient: { name: ingredient }, unit: { unit: unit }).ratio.to_f
+            amount = ratio * quantity
+          else
+            @food_cost = FoodCost.create(recipe_id: recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: Constants::NO_REGISTRATION, note:synonym)
+            next
+          end
+        end
+
+        cost = amount * Price.includes(:ingredient).find_by(ingredient: { name: ingredient }).one_base_unit_price
+        @food_cost = FoodCost.find_or_initialize_by(recipe_id: recipe_id, quantity_unit: quantity_unit, price_id: Price.includes(:ingredient).find_by(ingredient: { name: ingredient }).id)
+        #失敗したらエラーにする
+        @food_cost.assign_attributes(cost: cost, note: '')
+        @food_cost.save
+      end
     end
   end
 
@@ -108,7 +112,7 @@ module RakutenRecipeScrapes
 
       if quantity_unit == nil
         quantity_unit = full_to_half(node.css('.recipe_material__item_serving').text.strip)
-        @food_cost = FoodCost.create(recipe_id: recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: 100000, note:synonym)
+        @food_cost = FoodCost.create(recipe_id: recipe_id, quantity_unit: quantity_unit, cost: 0, price_id: Constants::NO_REGISTRATION, note:synonym)
         return [quantity_unit, quantity, unit]
       end
 
