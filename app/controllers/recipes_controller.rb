@@ -4,11 +4,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @q = Recipe.left_outer_joins(:food_costs)
-               .group("recipes.id")
-               .select("recipes.*, sum(food_costs.cost) as cook_cost")
-               .order("recipes.created_at DESC")
-               .ransack(params[:q])
+    @q = Recipe.order("recipes.created_at DESC").ransack(params[:q])
     @recipes = @q.result(distinct: true).page(params[:page])
   end
 
@@ -30,9 +26,6 @@ class RecipesController < ApplicationController
 
   def bookmarks
     @q = current_user.bookmark_recipes
-                     .left_outer_joins(:food_costs)
-                     .group("recipes.id")
-                     .select("recipes.*, sum(food_costs.cost) as cook_cost")
                      .order("recipes.created_at DESC")
                      .ransack(params[:q])
     @recipes = @q.result(distinct: true).page(params[:page])

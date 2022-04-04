@@ -1,7 +1,9 @@
 .pb-btn style='z-index: 1;'
   = link_to recipe_path(recipe.id) do
     span.pb-btn_text = recipe.cuisine_name
-    span.pb-btn_text.text-end.mr-5 = "材料費　#{recipe.cook_cost.round(0)}円"
+    span.pb-btn_text.text-end.mr-5 = "材料費　#{recipe.cook_cost}円"
+    - unless recipe.one_meal_cost == nil
+      span.pb-btn_text.text-end.mr-5 = "1食あたり　#{recipe.one_meal_cost}円"
 
 - if logged_in?
   div id="bookmark_button_#{recipe.id}" class='bookmark' style='position: relative; z-index: 10; margin-right: 11vw; margin-top: -50px'

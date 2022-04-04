@@ -1,13 +1,27 @@
 - content_for(:title, 'レシピ一覧 | CookCost')
 .content
   h1.text-center.m-3 レシピ一覧
-  div align="center"
+  .col-sm-12.col-lg-12 align="center"
     = search_form_for @q, url:recipes_path do |f|
-      = f.search_field :cuisine_name_cont, placeholder: 'レシピ名', style: 'width: 65%;'
-      = f.button type:"submit", style: 'background-color: #FFB800; border-color: #FFB800;' do
+      .input-group.my-1
+        = f.label 'レシピ名', class: 'col-3 col-sm-3 col-lg-3 m-1'
+        = f.search_field :cuisine_name_cont, class: 'col-7 col-sm-7 col-lg-7'
+      .input-group.my-1
+        = f.label '材料費', class: 'col-3 col-sm-3 col-lg-3 m-1'
+        = f.search_field :cook_cost_gteq, class: 'col-3 col-sm-3 col-lg-3 text-end'
+        span.col-1.m-1 ~
+        = f.search_field :cook_cost_lteq, class: 'col-3 col-sm-3 col-lg-3 text-end'
+        span.col-1.m-1 円
+      .input-group.my-1
+        = f.label '1食あたり', class: 'col-3 col-sm-3 col-lg-3 m-1'
+        = f.search_field :one_meal_cost_gteq, class: 'col-3 col-sm-3 col-lg-3 text-end'
+        span.col-1.m-1 ~
+        = f.search_field :one_meal_cost_lteq, class: 'col-3 col-sm-3 col-lg-3 text-end'
+        span.col-1.m-1 円
+      = f.button type:"submit", class: 'col-11 col-sm-11 col-lg-11 my-2', style: 'background-color: #FFB800; border-color: #FFB800;' do
           i.fa.fa-search.icon
   - if @recipes.present?
     = render @recipes
   - else
-    p 登録されたレシピはありません
+    p.text-center 登録されたレシピはありません
   = paginate @recipes
