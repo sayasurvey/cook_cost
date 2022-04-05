@@ -2,17 +2,17 @@
 
 .container.col-sm-12.px-2
   = render 'recipes/new'
-  .rakuten-recipe.mx-auto
-    = link_to 'https://recipe.rakuten.co.jp/', class: 'btn btn-rakuten m-1', target: :_brank do
+  .rakuten-recipe.mx-auto.m-2
+    = link_to 'https://recipe.rakuten.co.jp/', class: 'btn btn-rakuten p-2 m-1', target: :_brank do
       i.fas.fa-utensils.float-left.top-btn-icon
       |楽天レシピへ
-    = link_to categories_path, class: 'btn btn-rakuten m-1' do
+    = link_to categories_path, class: 'btn btn-rakuten p-2 m-1' do
       i.fas.fa-tag
       |　カテゴリーの人気レシピから探す
-    = link_to recipes_path, class: 'btn btn-rakuten m-1' do
+    = link_to recipes_path, class: 'btn btn-rakuten p-2 m-1' do
       i.fas.fa-drumstick-bite.float-left.top-btn-icon
       |登録済みレシピから探す
-  .about.layer.layer-about
+  .about.layer.layer-about.my-3
     h1.p-2.text-center
       |ABOUT
     p.px-3
@@ -24,8 +24,8 @@
     p.px-3
       |楽天レシピの情報から材料費を<br>シュミレーションするサービスです。
 
-  .how-to
-    h1.p-2.text-center.mt-2
+  .how-to.my-2
+    h1.p-2.text-center.mt-4
       |HOW TO
     .layer.layer-how-to
       .balloon2.how-to-one
@@ -35,7 +35,7 @@
       .balloon2.how-to-three
         |③材料費が表示される
 
-  .shere.my-2.text-center
+  .shere.m-4.text-center
     = link_to "https://twitter.com/share?url=#{ request.url }&text=自炊するとき、買った方が安いのか%0a%23材料費 はいくらかかるのか%0a気になったことはありませんか？%0a%23CookCost なら手軽にシュミレーションできる！%0a%0a%23楽天レシピ%0a%23自炊%0a%23節約%0a",
               class: 'btn twitter', target: '_blank' do
       i.fab.fa-twitter.text-white

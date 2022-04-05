@@ -1,18 +1,19 @@
 - content_for(:title, "レシピ一覧 | CookCost")
 
-.categories_list.m-3
+.categories_list.mt-3
   h1.text-center.mb-2 = @category.name
   - @child_categories.each do |child_category|
     a.col-4.col-sm-4.btn.category-btn id="#{@category.rakuten_id}-#{child_category.rakuten_id}" onclick = "click_button()" =child_category.name
 
 .recipe_list
-  ul#recipe_list.mt-2
+  ul#recipe_list
 
-.credit.text-center
+.credit.text-center.mb-3
   /! Rakuten Web Services Attribution Snippet FROM HERE
   a href="https://webservice.rakuten.co.jp/" target="_blank"
     img alt=("Rakuten Web Service Center") border="0" height="21" src="https://webservice.rakuten.co.jp/img/credit/200709/credit_22121.gif" title=("Rakuten Web Service Center") width="221" /
   /! Rakuten Web Services Attribution Snippet TO HERE
+
 javascript:
   function click_button(e){
     var e = e || window.event;
@@ -28,17 +29,15 @@ javascript:
     function updateText(data) {
       for (let i = 0; i < data.length; i++) {
         const insertHtml = `
-        <div class="cp_card02">
-          <div class="photo photo1">
-            <a href="${data[i].recipeUrl}" target="_blank">
-              <img src="${data[i].foodImageUrl}" alt="${data[i].recipeTitle} 画像">
-            </a>
+        <div class="card mt-5">
+          <div class="ratio ratio-16x9">
+            <img src="${data[i].foodImageUrl}" alt="${data[i].recipeTitle} 画像" style='object-fit: cover;'>
           </div>
-            <div class="description">
-              <h5>${data[i].recipeTitle}</h5>
-              <p>${data[i].recipeMaterial}</p>
-              <a class="btn link-btn" rel="nofollow" data-method="post" href="/recipes/scrape?url=${data[i].recipeUrl}">材料費をみる</a>
-            </div>
+          <div class="card-body">
+            <h5 class='card-title'>${data[i].recipeTitle}</h5>
+            <p class='card-text'>${data[i].recipeMaterial}</p>
+            <a class="btn width-100" rel="nofollow" data-method="post" href="/recipes/scrape?url=${data[i].recipeUrl}">材料費をみる</a>
+          </div>
           </div>
         </div>
         `;

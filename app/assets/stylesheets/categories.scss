@@ -1,94 +1,3 @@
-.cp_card02 {
-	font-size: 14px;
-	line-height: 1.45em;
-	position: relative;
-	overflow: hidden;
-	height: 120px;
-	margin: 0 auto 1.6%;
-	-webkit-transition: height 0.3s ease;
-	        transition: height 0.3s ease;
-	border-radius: 3px;
-	background: #ffffff;
-	-webkit-box-shadow: 0 3px 7px -3px rgba(0, 0, 0, 0.3);
-	        box-shadow: 0 3px 7px -3px rgba(0, 0, 0, 0.3);
-}
-
-.cp_card02 .photo {
-	position: relative;
-	float: left;
-	width: 30%;
-
-	-webkit-transition: all 0.5s ease;
-	        transition: all 0.5s ease;
-}
-
-.cp_card02 .description {
-	position: relative;
-	z-index: 0;
-	float: left;
-	width: 70%;
-	padding: 10px 0px;
-	min-height: 120px;
-}
-
-.cp_card02 .description::before {
-	position: absolute;
-	z-index: -1;
-	top: 0;
-	bottom: 0;
-	left: -15px;
-	width: 100%;
-	content: '';
-	-webkit-transform: skewX(-8deg);
-	        transform: skewX(-8deg);
-	background: #ffffff;
-}
-
-.cp_card02 .description h1 {
-	font-size: 1.4em;
-	line-height: 1em;
-	margin: 0 0 10px 0;
-}
-
-.cp_card02 .description h2 {
-	font-size: 1em;
-	line-height: 1.2em;
-	margin: 1.2% 0;
-	color: #9b9b9b;
-}
-
-.cp_card02 .description p {
-	position: relative;
-	margin: 0;
-	padding-right: 3px;
-  font-size: 1.5vw;
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.cp_card02 .description a {
-	float: right;
-	margin-bottom: 10px;
-	text-decoration: none;
-}
-
-.cp_card02 .description a::after {
-	font-family: FontAwesome;
-	margin-left: -10px;
-	content: '\f061';
-	-webkit-transition: all 0.3s ease;
-	        transition: all 0.3s ease;
-	vertical-align: middle;
-	opacity: 0;
-}
-
-img {
-  height: 100%;
-  max-width: 180%;
-}
-
 .link-btn {
   position: absolute;
 	font-size: clamp(7px, 2.3vw, 13px);
@@ -100,11 +9,11 @@ img {
 	border: 4px solid;
 	border-color: white;
 	border-radius: 3px;
-	padding: 2px 0px;
 	font-size: clamp(7px, 3.5vw, 15px);
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	padding: 10px 0px;
 }
 
 .rakuten-recipe {
@@ -114,6 +23,13 @@ img {
   align-items: center;
 }
 
-ul{
+ul {
 	padding: 0px 13px;
+}
+
+.card-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }

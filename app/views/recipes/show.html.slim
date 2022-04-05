@@ -1,12 +1,6 @@
 - content_for(:title, "#{@recipe.cuisine_name} | CookCost")
 
-.kakomi-tape
-  span.title-tape = '引用元'
-  h3.cuisine_name = @recipe.cuisine_name
-  =link_to "#{@recipe.recipe_url}", @recipe.recipe_url, id: 'recipe_url'
-  p.text-end.mb-2 = "by#{@recipe.originator}"
-
-p.text-center.text-gray style='margin: 0px;' = @recipe.how_many
+p.text-center.text-gray.m-2 = @recipe.how_many
 
 div align='center'
   .table.mx-3 style='width: 90%;'
@@ -44,6 +38,13 @@ div align='center'
       div id="bookmark_button_#{@recipe.id}" class='bookmark'
         = render "bookmarks/bookmark", recipe: @recipe
     = render 'recipes/show_btn'
+
+
+.kakomi-tape
+  span.title-tape = '引用元'
+  h3.cuisine_name = @recipe.cuisine_name
+  =link_to "#{@recipe.recipe_url}", @recipe.recipe_url, id: 'recipe_url'
+  p.text-end.mb-2 = "by#{@recipe.originator}"
 
 .annotation.kakomi-tape
   span.title-tape = '注意'

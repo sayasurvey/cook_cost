@@ -442,3 +442,10 @@ td {
 .table-responsive::-webkit-scrollbar-thumb {
   background-color: #bdc3c7;
 }
+
+input {
+  padding: 0;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #FFB800;
+}
