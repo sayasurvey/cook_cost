@@ -1,5 +1,5 @@
 .shere.text-center style='margin-top: 13px;'
-  = link_to "https://twitter.com/share?url=#{request.url}&text=#{@recipe.cuisine_name}を%0a%23CookCost で材料費を%0aシュミレーションした結果、%0a#{@cost_sum.round(0)}円でした。%0a%0a%23楽天レシピ%0a%23自炊%0a%23節約%0a%0a詳細はこちら%0a",
+  = link_to "https://twitter.com/share?url=#{request.url}&text=#{@recipe.cuisine_name}を%0a%23CookCost で材料費を%0a計算した結果、%0a#{@cost_sum.round(0)}円でした。%0a%0a%23楽天レシピ%0a%23自炊%0a%23節約%0a%0a詳細はこちら%0a",
             class: "btn twitter #{" margin-left-12" if logged_in?}", target: '_blank' do
     i.fab.fa-twitter.text-white
     |　Twitterでシェア

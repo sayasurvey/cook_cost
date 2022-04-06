@@ -2,10 +2,10 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'CookCost',
-      title: '楽天レシピから材料費シュミレーションサイト',
+      title: '楽天レシピから材料費計算サイト',
       reverse: true,
       charset: 'utf-8',
-      description: '材料費シュミレーション',
+      description: '材料費計算',
       keywords: '材料費, 計算, 自炊, 節約, 節約レシピ',
       canonical: request.original_url,
       separator: '|',
