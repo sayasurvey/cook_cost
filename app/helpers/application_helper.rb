@@ -6,7 +6,7 @@ module ApplicationHelper
       reverse: true,
       charset: 'utf-8',
       description: '材料費計算',
-      keywords: '材料費, 計算, 自炊, 節約, 節約レシピ',
+      keywords: '材料費, 計算, 料理, 節約, 節約レシピ',
       canonical: request.original_url,
       separator: '|',
       icon: [
