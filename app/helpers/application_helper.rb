@@ -6,7 +6,7 @@ module ApplicationHelper
       reverse: true,
       charset: 'utf-8',
       description: '材料費シュミレーション',
-      keywords: '料理, 節約, 材料費, 楽天レシピ',
+      keywords: '材料費, 計算, 自炊, 節約, 節約レシピ',
       canonical: request.original_url,
       separator: '|',
       icon: [
@@ -24,7 +24,7 @@ module ApplicationHelper
       },
       twitter: {
         card: 'summary_large_image',
-        site: '@Runteq_sayaka'
+        site: '@cookcost'
       }
     }
   end
