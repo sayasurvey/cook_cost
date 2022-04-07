@@ -12,3 +12,9 @@
     color: blue;
   }
 }
+
+.btn-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: start;
+}
