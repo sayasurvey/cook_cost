@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[ show edit update destroy ]
+  before_action :set_recipe, only: %i[ show ]
   before_action :require_login, only: %i[ bookmarks ]
 
   # GET /recipes or /recipes.json
