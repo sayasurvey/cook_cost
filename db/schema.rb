@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_04_055123) do
+ActiveRecord::Schema.define(version: 2022_04_08_122348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2022_04_04_055123) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipe_id"], name: "index_bookmarks_on_recipe_id"
+    t.index ["user_id", "recipe_id"], name: "index_bookmarks_on_user_id_and_recipe_id", unique: true
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 2022_04_04_055123) do
     t.float "ratio", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id", "unit_id"], name: "index_ingredient_units_on_ingredient_id_and_unit_id", unique: true
     t.index ["ingredient_id"], name: "index_ingredient_units_on_ingredient_id"
     t.index ["unit_id"], name: "index_ingredient_units_on_unit_id"
   end
@@ -94,6 +96,7 @@ ActiveRecord::Schema.define(version: 2022_04_04_055123) do
     t.float "one_base_unit_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id", "unit_id"], name: "index_prices_on_ingredient_id_and_unit_id", unique: true
     t.index ["ingredient_id"], name: "index_prices_on_ingredient_id"
     t.index ["unit_id"], name: "index_prices_on_unit_id"
   end
