@@ -1,10 +1,10 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[ show ]
-  before_action :require_login, only: %i[ bookmarks ]
+  before_action :set_recipe, only: %i[show]
+  before_action :require_login, only: %i[bookmarks]
 
   # GET /recipes or /recipes.json
   def index
-    @q = Recipe.order("recipes.created_at DESC").ransack(params[:q])
+    @q = Recipe.order('recipes.created_at DESC').ransack(params[:q])
     @recipes = @q.result(distinct: true).page(params[:page])
   end
 
@@ -12,7 +12,14 @@ class RecipesController < ApplicationController
   def show
     @food_costs = FoodCost.where(recipe_id: params[:id])
                           .joins(price: :ingredient)
-                          .select("ingredients.name, prices.purchase_price, prices.quantity, prices.unit_id, food_costs.id, food_costs.quantity_unit, food_costs.cost, food_costs.note")
+                          .select('ingredients.name,
+                                   prices.purchase_price,
+                                   prices.quantity,
+                                   prices.unit_id,
+                                   food_costs.id,
+                                   food_costs.quantity_unit,
+                                   food_costs.cost,
+                                   food_costs.note')
                           .order(id: :asc)
     @cost_sum = @food_costs.sum(:cost)
   end
@@ -26,13 +33,13 @@ class RecipesController < ApplicationController
 
   def bookmarks
     @q = current_user.bookmark_recipes
-                     .order("recipes.created_at DESC")
+                     .order('recipes.created_at DESC')
                      .ransack(params[:q])
     @recipes = @q.result(distinct: true).page(params[:page])
   end
 
   def scrape
-    if params[:url].match(/([https:\/\/recipe.rakuten.co.jp\/recipe\/]+[0-9]{10}\/)/)
+    if params[:url].match(%r{([https://recipe.rakuten.co.jp/recipe/]+[0-9]{10}/)})
       scrape_rakuten_recipes(params[:url])
       redirect_to recipe_path(Recipe.find_by(recipe_url: params[:url]))
     else
@@ -42,8 +49,9 @@ class RecipesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
-      @recipe = Recipe.find(params[:id])
-    end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
 end

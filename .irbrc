@@ -8,10 +8,4 @@ rescue LoadError
   # hirbがrequireできないでござる
 end
 
-if defined? Rails::Console
-
-  if defined? Hirb
-    Hirb.enable
-  end
-
-end
+Hirb.enable if defined? Rails::Console && defined? Hirb

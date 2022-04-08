@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Recipes", type: :system do
+RSpec.describe 'Recipes', type: :system do
   describe '材料費の計算' do
     it '複雑でない材料名の計算' do
       visit root_path

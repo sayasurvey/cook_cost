@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Categories", type: :system do
+RSpec.describe 'Categories', type: :system do
   describe 'カテゴリー' do
     it 'カテゴリー一覧からレシピを選択' do
       visit root_path
