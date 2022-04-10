@@ -1,6 +1,7 @@
 module RakutenRecipeScrapes
   require 'open-uri'
   require 'nokogiri'
+  require "json"
   
   def scrape_rakuten_recipes(url)
     charset = nil
@@ -73,6 +74,9 @@ module RakutenRecipeScrapes
         #失敗したらエラーにする
         @food_cost.assign_attributes(cost: cost, note: '')
         @food_cost.save
+
+        binding.irb
+        get_json("https://apex.oracle.com/pls/apex/foods/get_nutrient/ingredient/momo")
       end
     end
   end
@@ -140,5 +144,32 @@ module RakutenRecipeScrapes
       one_meal_cost = (cook_cost / how_many.to_i)
     end
       @recipe.update(cook_cost: cook_cost, one_meal_cost: one_meal_cost)
+  end
+
+  def get_json(location, limit = 10)
+    raise ArgumentError, 'too many HTTP redirects' if limit == 0
+    uri = URI.parse(location)
+    begin
+      response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
+        http.open_timeout = 5
+        http.read_timeout = 10
+        http.get(uri.request_uri)
+      end
+      case response
+      when Net::HTTPSuccess
+        json = response.body
+        JSON.parse(json)
+      when Net::HTTPRedirection
+        location = response['location']
+        warn "redirected to #{location}"
+        get_json(location, limit - 1)
+      else
+        puts [uri.to_s, response.value].join(" : ")
+        # handle error
+      end
+    rescue => e
+      puts [uri.to_s, e.class, e].join(" : ")
+      # handle error
+    end
   end
 end

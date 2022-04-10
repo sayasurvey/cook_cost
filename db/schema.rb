@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_08_122348) do
+ActiveRecord::Schema.define(version: 2022_04_09_125541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,19 @@ ActiveRecord::Schema.define(version: 2022_04_08_122348) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "nutrients", force: :cascade do |t|
+    t.bigint "recipe_id", null: false
+    t.integer "calorie"
+    t.integer "carbohydrate"
+    t.integer "protein"
+    t.integer "lipid"
+    t.integer "dietary_fiber"
+    t.integer "salt_equivalent"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_nutrients_on_recipe_id"
+  end
+
   create_table "prices", force: :cascade do |t|
     t.bigint "ingredient_id", null: false
     t.integer "purchase_price", null: false
@@ -142,6 +155,7 @@ ActiveRecord::Schema.define(version: 2022_04_08_122348) do
   add_foreign_key "food_costs", "recipes"
   add_foreign_key "ingredient_units", "ingredients"
   add_foreign_key "ingredient_units", "units"
+  add_foreign_key "nutrients", "recipes"
   add_foreign_key "prices", "ingredients"
   add_foreign_key "prices", "units"
   add_foreign_key "synonyms", "ingredients"
