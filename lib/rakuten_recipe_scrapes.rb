@@ -2,6 +2,7 @@ module RakutenRecipeScrapes
   require 'open-uri'
   require 'nokogiri'
   require "json"
+  require 'uri'
   
   def scrape_rakuten_recipes(url)
     charset = nil
@@ -75,8 +76,8 @@ module RakutenRecipeScrapes
         @food_cost.assign_attributes(cost: cost, note: '')
         @food_cost.save
 
-        binding.irb
-        get_json("https://apex.oracle.com/pls/apex/foods/get_nutrient/ingredient/momo")
+        #binding.irb
+        #get_json("https://apex.oracle.com/pls/apex/foods/get_nutrient/ingredient/#{URI.encode_www_form_component('鶏もも肉')}")
       end
     end
   end
