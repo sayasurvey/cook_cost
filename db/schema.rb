@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_09_125541) do
+ActiveRecord::Schema.define(version: 2022_04_13_054958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,13 @@ ActiveRecord::Schema.define(version: 2022_04_09_125541) do
     t.integer "salt_equivalent"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "calorie_ratio"
+    t.integer "carbohydrate_ratio"
+    t.integer "protein_ratio"
+    t.integer "lipid_ratio"
+    t.integer "dietary_fiber_ratio"
+    t.integer "salt_equivalent_ratio"
+    t.string "how_many"
     t.index ["recipe_id"], name: "index_nutrients_on_recipe_id"
   end
 
