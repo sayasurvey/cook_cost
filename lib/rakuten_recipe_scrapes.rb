@@ -36,6 +36,7 @@ module RakutenRecipeScrapes
 
   def register_ingredients_from_html(doc, html_path, url)
     recipe_id = Recipe.find_by(recipe_url: params[:url]).id
+    calorie, carbohydrate, protein, lipid, dietary_fiber, salt_equivalent = [ 0, 0, 0, 0, 0, 0 ]
     #そのレシピを過去に作成したときにFoodCostにprice_idで未登録(100000)があれば、その情報を全て削除
     FoodCost.where(recipe_id: recipe_id, price_id: Constants::NO_REGISTRATION).destroy_all
     doc.xpath("#{html_path}div[3]/section/ul").css('li').map do |node|
@@ -76,10 +77,30 @@ module RakutenRecipeScrapes
         @food_cost.assign_attributes(cost: cost, note: '')
         @food_cost.save
 
-        #binding.irb
-        #get_json("https://apex.oracle.com/pls/apex/foods/get_nutrient/ingredient/#{URI.encode_www_form_component('鶏もも肉')}")
+        nutrients = get_json("https://apex.oracle.com/pls/apex/foods/get_nutrient/ingredient/#{URI.encode_www_form_component(ingredient)}")["items"][0]
+        unless nutrients == nil
+          calorie += nutrients["calorie"] * amount
+          carbohydrate += nutrients["carbohydrate"] * amount
+          protein += nutrients["protein"] * amount
+          lipid += nutrients["lipid"] * amount
+          dietary_fiber += nutrients["dietary_fiber"] * amount
+          salt_equivalent += nutrients["salt_equivalent"] * amount
+        end
       end
     end
+    @recipe = Recipe.find(recipe_id)
+    if /.*([0-9０-９])+[人個こコ皿]+/.match(@recipe.how_many)
+      how_many = @recipe.how_many.match(/.*([0-9０-９])+[人個こコ皿]+/)[1].to_i
+      calorie = (calorie / how_many)
+      carbohydrate = (carbohydrate / how_many)
+      protein = (protein / how_many)
+      lipid = (lipid / how_many)
+      dietary_fiber = (dietary_fiber / how_many)
+      salt_equivalent = (salt_equivalent / how_many)
+    end
+    @nutrient = Nutrient.find_or_initialize_by(recipe_id: recipe_id)
+    @nutrient.assign_attributes(calorie: calorie, carbohydrate: carbohydrate, protein: protein, lipid: lipid, dietary_fiber: dietary_fiber, salt_equivalent: salt_equivalent)
+    @nutrient.save
   end
 
   def regular_expression(node, quantity_unit, recipe_id, synonym)
@@ -140,9 +161,9 @@ module RakutenRecipeScrapes
   def add_recipe_costs
     @recipe = Recipe.find_by(recipe_url: params[:url])
     cook_cost = FoodCost.where(recipe_id: @recipe).sum(:cost)
-    if (/.*([0-9０-９])+[人個こコ皿]+/.match(@recipe.how_many))
-      how_many = @recipe.how_many.match(/.*([0-9０-９])+[人個こコ皿]+/)[1]
-      one_meal_cost = (cook_cost / how_many.to_i)
+    if /.*([0-9０-９])+[人個こコ皿]+/.match(@recipe.how_many)
+      how_many = @recipe.how_many.match(/.*([0-9０-９])+[人個こコ皿]+/)[1].to_i
+      one_meal_cost = (cook_cost / how_many)
     end
       @recipe.update(cook_cost: cook_cost, one_meal_cost: one_meal_cost)
   end

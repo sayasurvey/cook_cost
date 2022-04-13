@@ -39,6 +39,12 @@ div align='center'
         = render "bookmarks/bookmark", recipe: @recipe
     = render 'recipes/show_btn'
 
+p カロリー#{@nutrient.calorie}kcal
+p 炭水化物#{@nutrient.carbohydrate}g
+p タンパク質#{@nutrient.protein}g
+p 脂質#{@nutrient.lipid}g
+p 食物繊維#{@nutrient.dietary_fiber}g
+p 塩分相当量#{@nutrient.salt_equivalent}g
 
 .kakomi-tape
   span.title-tape = '引用元'
