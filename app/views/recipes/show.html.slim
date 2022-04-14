@@ -8,9 +8,9 @@ div align='center'
       = render "bookmarks/bookmark", recipe: @recipe
   = render 'recipes/partial/show_btn'
 
-/= render 'recipes/partial/nutrient_table'
+= render 'recipes/partial/nutrient_table'
 
-/canvas.mt-3#myChart style='height: 250px;'
+canvas.mt-3#myChart style='height: 250px;'
 
 .kakomi-tape
   span.title-tape = '引用元'
@@ -26,7 +26,6 @@ div align='center'
   p ・登録がない食品は、順次登録致します。
   p ・栄養素はあくまで例です。<br>　調理方法等によって大幅に異なります。
 
-/
   javascript:
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {

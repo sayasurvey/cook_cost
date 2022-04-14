@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
                                    food_costs.note')
                           .order(id: :asc)
     @cost_sum = @food_costs.sum(:cost)
-    #@nutrient = Nutrient.find_by(recipe_id: params[:id])
+    @nutrient = Nutrient.find_by(recipe_id: params[:id])
   end
 
   # GET /recipes/new
