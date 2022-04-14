@@ -37,7 +37,7 @@ div align='center'
     -if logged_in?
       div id="bookmark_button_#{@recipe.id}" class='bookmark'
         = render "bookmarks/bookmark", recipe: @recipe
-    = render 'recipes/show_btn'
+    = render 'recipes/partial/show_btn'
 
 div.px-3 align='center'
   table.table-design
