@@ -94,7 +94,7 @@ module RakutenRecipeScrapes
       how_many = @recipe.how_many.match(/.*([0-9０-９])+([人個こコ皿])+/)
       how_many = "1" + how_many[2] + "分あたり"
       calorie = (calorie / quantity).round
-      calorie_ratio = (calorie / 683) * 100
+      calorie_ratio = (calorie / 683.0) * 100
       carbohydrate = (carbohydrate / quantity).round
       carbohydrate_ratio = (carbohydrate / 98.2) * 100
       protein = (protein / quantity).round
