@@ -36,7 +36,7 @@ module RakutenRecipeScrapes
 
   def register_ingredients_from_html(doc, html_path, url)
     recipe_id = Recipe.find_by(recipe_url: params[:url]).id
-    calorie, carbohydrate, protein, lipid, dietary_fiber, salt_equivalent, calorie_ratio, carbohydrate_ratio, protein_ratio, lipid_ratio, dietary_fiber_ratio, salt_equivalent_ratio = [ 0, 0, 0, 0, 0.0, 0.0, 0, 0, 0, 0, 0, 0 ]
+    calorie, carbohydrate, protein, lipid, dietary_fiber, salt_equivalent, calorie_ratio, carbohydrate_ratio, protein_ratio, lipid_ratio, dietary_fiber_ratio, salt_equivalent_ratio, note = [ 0, 0, 0, 0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, '' ]
     #そのレシピを過去に作成したときにFoodCostにprice_idで未登録(100000)があれば、その情報を全て削除
     FoodCost.where(recipe_id: recipe_id, price_id: Constants::NO_REGISTRATION).destroy_all
     doc.xpath("#{html_path}div[3]/section/ul").css('li').map do |node|
@@ -85,6 +85,8 @@ module RakutenRecipeScrapes
           lipid += nutrients["lipid"] * amount
           dietary_fiber += nutrients["dietary_fiber"] * amount
           salt_equivalent += nutrients["salt_equivalent"] * amount
+        else
+          note = note + ingredient + ','
         end
       end
     end
@@ -105,6 +107,8 @@ module RakutenRecipeScrapes
       dietary_fiber_ratio = (dietary_fiber / 6) * 100
       salt_equivalent = (salt_equivalent / quantity).round(1)
       salt_equivalent_ratio = (salt_equivalent / 2.2) * 100
+    else
+      how_many = @recipe.how_many
     end
     @nutrient = Nutrient.find_or_initialize_by(recipe_id: recipe_id)
     @nutrient.assign_attributes(calorie: calorie,
@@ -119,7 +123,8 @@ module RakutenRecipeScrapes
                                 lipid_ratio: lipid_ratio,
                                 dietary_fiber_ratio: dietary_fiber_ratio,
                                 salt_equivalent_ratio: salt_equivalent_ratio,
-                                how_many: how_many)
+                                how_many: how_many,
+                                note: note)
     @nutrient.save
   end
 

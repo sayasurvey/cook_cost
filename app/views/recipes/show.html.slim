@@ -65,7 +65,9 @@ div.px-3 align='center'
         td.text-center 塩分相当量
         td.text-center #{@nutrient.salt_equivalent}g
 
-canvas#myChart style='height: 250px;'
+span.mx-3 #{@nutrient.note }データ未登録の食品除く
+
+canvas.mt-3#myChart style='height: 250px;'
 
 .kakomi-tape
   span.title-tape = '引用元'
@@ -79,6 +81,7 @@ canvas#myChart style='height: 250px;'
   p ・適量やお好みなど使用量がはっきりしないものは<br>　計算できません。
   p ・使用量に単位がないものは計算できません。
   p ・登録がない食品は、順次登録致します。
+  p ・栄養素はあくまで例です。<br>　調理方法等によって大幅に異なります。
 
 javascript:
   var ctx = document.getElementById("myChart");
