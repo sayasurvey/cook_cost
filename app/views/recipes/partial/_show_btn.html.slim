@@ -3,6 +3,5 @@
             class: "btn twitter #{" margin-left-12" if logged_in?}", target: '_blank' do
     i.fab.fa-twitter.text-white
     |　Twitterでシェア
-div align="center"
-  <a class="btn mt-1" rel="nofollow" data-method="post" href="/recipes/scrape?url=#{@recipe.recipe_url}">材料費を更新する</a>
-/ #{" ms-4" if logged_in?}
+
+<a class="btn mt-1 #{" margin-left-12" if logged_in?}"" rel="nofollow" data-method="post" href="/recipes/scrape?url=#{@recipe.recipe_url}">材料費を更新する</a>

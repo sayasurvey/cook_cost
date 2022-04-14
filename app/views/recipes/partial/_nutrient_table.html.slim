@@ -1,0 +1,27 @@
+div.px-3.mt-2 align='center'
+  table.table-design.mb-0
+    thead
+      tr
+        th.text-center #{@nutrient.how_many}
+        th.text-center 栄養量
+    tbody
+      tr
+        td.text-center カロリー
+        td.text-center #{@nutrient.calorie}kcal
+      tr
+        td.text-center 炭水化物
+        td.text-center #{@nutrient.carbohydrate}g
+      tr
+        td.text-center タンパク質
+        td.text-center #{@nutrient.protein}g
+      tr
+        td.text-center 脂質
+        td.text-center #{@nutrient.lipid}g
+      tr
+        td.text-center 食物繊維
+        td.text-center #{@nutrient.dietary_fiber}g
+      tr
+        td.text-center 塩分相当量
+        td.text-center #{@nutrient.salt_equivalent}g
+
+  span.font-size-3vw #{@nutrient.note }データ未登録の食品除く

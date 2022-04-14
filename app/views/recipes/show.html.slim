@@ -1,73 +1,16 @@
 - content_for(:title, "#{@recipe.cuisine_name} | CookCost 〜材料費計算アプリ〜")
 
-p.text-center.text-gray.m-2 = @recipe.how_many
-
 div align='center'
-  .table.px-3
-    table
-      thead
-        tr
-          th.text-center 材料名
-          th.text-center 使用量
-          th.text-center 材料費
-      tbody
-        - @food_costs.each do |food_cost|
-          tr
-            td style="width: 42%"
-              - if food_cost.name == '未登録'
-                = food_cost.note
-                br/
-                span = 'データ未登録'
-              - else
-                = food_cost.name
-                br/
-                - if food_cost.quantity % 1 == 0
-                  /単位の取得がうまく行かなかったので応急処置
-                  span = "@#{food_cost.purchase_price}円/#{food_cost.quantity.to_i}#{Unit.find_by(id: food_cost.unit_id).unit}"
-                - else
-                  span = "@#{food_cost.purchase_price}円/#{food_cost.quantity}#{Unit.find_by(id: food_cost.unit_id).unit}"
-            td.text-end#quantity_unit style="width: 27rem" = food_cost.quantity_unit
-            td.text-end style="width: 25%" = food_cost.cost.round(1)
-      tfoot
-        tr
-          th
-          th.text-end = '合計'
-          th.text-end = @cost_sum.round(1)
+  = render 'recipes/partial/cost_table'
 
-    -if logged_in?
-      div id="bookmark_button_#{@recipe.id}" class='bookmark'
-        = render "bookmarks/bookmark", recipe: @recipe
-    = render 'recipes/partial/show_btn'
+  -if logged_in?
+    div id="bookmark_button_#{@recipe.id}" class='bookmark'
+      = render "bookmarks/bookmark", recipe: @recipe
+  = render 'recipes/partial/show_btn'
 
-div.px-3 align='center'
-  table.table-design
-    thead
-      tr
-        th.text-center #{@nutrient.how_many}
-        th.text-center 栄養量
-    tbody
-      tr
-        td.text-center カロリー
-        td.text-center #{@nutrient.calorie}kcal
-      tr
-        td.text-center 炭水化物
-        td.text-center #{@nutrient.carbohydrate}g
-      tr
-        td.text-center タンパク質
-        td.text-center #{@nutrient.protein}g
-      tr
-        td.text-center 脂質
-        td.text-center #{@nutrient.lipid}g
-      tr
-        td.text-center 食物繊維
-        td.text-center #{@nutrient.dietary_fiber}g
-      tr
-        td.text-center 塩分相当量
-        td.text-center #{@nutrient.salt_equivalent}g
+/= render 'recipes/partial/nutrient_table'
 
-span.mx-3 #{@nutrient.note }データ未登録の食品除く
-
-canvas.mt-3#myChart style='height: 250px;'
+/canvas.mt-3#myChart style='height: 250px;'
 
 .kakomi-tape
   span.title-tape = '引用元'
