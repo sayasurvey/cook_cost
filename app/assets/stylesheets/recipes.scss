@@ -451,3 +451,13 @@ td {
     border-bottom: 1px solid #FFB800;
   }
 }
+
+th, td, th {
+ padding: 10px;
+ border: none;
+ background-color: white;
+}
+
+th {
+  font-size: clamp(3px, 5vw, 30px);
+}

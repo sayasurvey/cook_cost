@@ -93,19 +93,18 @@ module RakutenRecipeScrapes
       quantity = @recipe.how_many.match(/.*([0-9０-９])+[人個こコ皿]+/)[1].to_i
       how_many = @recipe.how_many.match(/.*([0-9０-９])+([人個こコ皿])+/)
       how_many = "1" + how_many[2] + "分あたり"
-      calorie = (calorie / quantity)
+      calorie = (calorie / quantity).round
       calorie_ratio = (calorie / 683) * 100
-      carbohydrate = (carbohydrate / quantity)
+      carbohydrate = (carbohydrate / quantity).round
       carbohydrate_ratio = (carbohydrate / 98.2) * 100
-      protein = (protein / quantity)
+      protein = (protein / quantity).round
       protein_ratio = (protein / 16.6) * 100
-      lipid = (lipid / quantity)
+      lipid = (lipid / quantity).round
       lipid_ratio = (lipid / 21.3) * 100
-      dietary_fiber = (dietary_fiber / quantity)
+      dietary_fiber = (dietary_fiber / quantity).round
       dietary_fiber_ratio = (dietary_fiber / 6) * 100
-      salt_equivalent = (salt_equivalent / quantity)
+      salt_equivalent = (salt_equivalent / quantity).round
       salt_equivalent_ratio = (salt_equivalent / 2.2) * 100
-      binding.irb
     end
     @nutrient = Nutrient.find_or_initialize_by(recipe_id: recipe_id)
     @nutrient.assign_attributes(calorie: calorie,

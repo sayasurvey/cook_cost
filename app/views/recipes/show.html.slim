@@ -3,7 +3,7 @@
 p.text-center.text-gray.m-2 = @recipe.how_many
 
 div align='center'
-  .table.mx-3 style='width: 90%;'
+  .table.px-3
     table
       thead
         tr
@@ -39,12 +39,34 @@ div align='center'
         = render "bookmarks/bookmark", recipe: @recipe
     = render 'recipes/show_btn'
 
-p カロリー#{@nutrient.calorie}kcal
-p 炭水化物#{@nutrient.carbohydrate}g
-p タンパク質#{@nutrient.protein}g
-p 脂質#{@nutrient.lipid}g
-p 食物繊維#{@nutrient.dietary_fiber}g
-p 塩分相当量#{@nutrient.salt_equivalent}g
+div.px-3 align='center'
+  p.text-center.text-gray.m-2 = @recipe.how_many
+  table.table-design
+    thead
+      tr
+        th.text-center #{@nutrient.how_many}
+        th.text-center 栄養量
+    tbody
+      tr
+        td.text-center カロリー
+        td.text-center #{@nutrient.calorie}kcal
+      tr
+        td.text-center 炭水化物
+        td.text-center #{@nutrient.carbohydrate}g
+      tr
+        td.text-center タンパク質
+        td.text-center #{@nutrient.protein}g
+      tr
+        td.text-center 脂質
+        td.text-center #{@nutrient.lipid}g
+      tr
+        td.text-center 食物繊維
+        td.text-center #{@nutrient.dietary_fiber}g
+      tr
+        td.text-center 塩分相当量
+        td.text-center #{@nutrient.salt_equivalent}g
+
+canvas#myChart style='height: 300px;'
 
 .kakomi-tape
   span.title-tape = '引用元'
@@ -58,3 +80,36 @@ p 塩分相当量#{@nutrient.salt_equivalent}g
   p ・適量やお好みなど使用量がはっきりしないものは<br>　計算できません。
   p ・使用量に単位がないものは計算できません。
   p ・登録がない食品は、順次登録致します。
+
+javascript:
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: ["カロリー", "炭水化物", "タンパク質", "脂質", "食物繊維", "塩分摂取量"],
+      datasets:
+      [
+        {
+          label: "#{@nutrient.how_many}(%)",
+          backgroundColor: 'rgba(102,255,129,0.25)',
+          borderColor: 'rgba(122,255,129,0.25)',
+          data: [#{@nutrient.calorie_ratio}, #{@nutrient.carbohydrate_ratio}, #{@nutrient.protein_ratio}, #{@nutrient.lipid_ratio}, #{@nutrient.dietary_fiber_ratio}, #{@nutrient.salt_equivalent_ratio}]
+        },
+        {
+          label: "40歳女性の１食に必要な栄養(目安)",
+          backgroundColor: 'rgba(240,117,218,0.07)',
+          borderColor: 'rgba(240,117,218,0.07)',
+          data: [100, 100, 100, 100, 100, 100]
+        }
+      ]
+    },
+    options: {
+      scale: {
+        ticks: {
+          min: 0,
+          max: 150,
+          stepSize: 50
+        }
+      }
+    }
+  });
