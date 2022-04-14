@@ -6,8 +6,8 @@ class CreateNutrients < ActiveRecord::Migration[6.1]
       t.integer :carbohydrate
       t.integer :protein
       t.integer :lipid
-      t.integer :dietary_fiber
-      t.integer :salt_equivalent
+      t.float :dietary_fiber
+      t.float :salt_equivalent
 
       t.timestamps
     end

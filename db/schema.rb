@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(version: 2022_04_13_054958) do
     t.integer "carbohydrate"
     t.integer "protein"
     t.integer "lipid"
-    t.integer "dietary_fiber"
-    t.integer "salt_equivalent"
+    t.float "dietary_fiber"
+    t.float "salt_equivalent"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "calorie_ratio"

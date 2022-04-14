@@ -40,7 +40,6 @@ div align='center'
     = render 'recipes/show_btn'
 
 div.px-3 align='center'
-  p.text-center.text-gray.m-2 = @recipe.how_many
   table.table-design
     thead
       tr
@@ -66,7 +65,7 @@ div.px-3 align='center'
         td.text-center 塩分相当量
         td.text-center #{@nutrient.salt_equivalent}g
 
-canvas#myChart style='height: 300px;'
+canvas#myChart style='height: 250px;'
 
 .kakomi-tape
   span.title-tape = '引用元'
