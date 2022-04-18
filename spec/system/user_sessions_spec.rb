@@ -33,7 +33,6 @@ RSpec.describe "UserSessions", type: :system do
       expect(page).to have_content('ログインに成功しました')
       expect(current_path).to eq(root_path)
       find('.menu-btn').click
-      binding.irb
       click_link 'ログアウト'
       expect(current_path).to eq(root_path)
       expect(page).to have_content('ログアウトしました')

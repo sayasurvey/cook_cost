@@ -92,4 +92,6 @@ RSpec.configure do |config|
   config.before(:suite) do
     SeedFu.seed
   end
+  require 'simplecov'
+  SimpleCov.start 'rails'
 end
