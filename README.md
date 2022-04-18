@@ -20,9 +20,9 @@ https://news.careerconnection.jp/pickup/98123/
 ・楽天レシピのURLを入力することでレシピの登録  
 ・カテゴリー一覧からレシピの選択や登録  
 ・すでに登録されたレシピから選択  
-・ユーザーが登録または選択したレシピの材料費の閲覧  
+・ユーザーが登録または選択したレシピの材料費と栄養素の閲覧  
 ・レシピ名等の検索機能  
-・問い合わせ機能  
+・お問い合わせ機能  
 ・Twitterシェア機能  
 |URLから探す|カテゴリーから探す|登録済みのレシピから探す|
 |---|---|---|
@@ -55,12 +55,12 @@ https://news.careerconnection.jp/pickup/98123/
 ・PostgreSQL
 
 ## その他
-・楽天レシピカテゴリ別ランキングAPI
-・食品成分表API(OracleのAPEXで自作)
+・楽天レシピカテゴリ別ランキングAPI  
+・食品成分表API(OracleのAPEXで自作)  
 ・chart.js
 
 # 画面遷移図
 [Figma](https://www.figma.com/file/DEMJHv3GKw0BrKaWAQhvK5/%E3%82%B9%E3%83%9E%E3%83%9B?node-id=2%3A10)
 
 # ER図
-[![Image from Gyazo](https://i.gyazo.com/db5f45d629d75efeb7d30abe6e3ee8f3.png)](https://gyazo.com/db5f45d629d75efeb7d30abe6e3ee8f3)
+[![Image from Gyazo](https://i.gyazo.com/378a1a9865749ad4db63637b29ca9cf0.png)](https://gyazo.com/378a1a9865749ad4db63637b29ca9cf0)
