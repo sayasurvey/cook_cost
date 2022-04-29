@@ -25,35 +25,35 @@
     p ・登録がない食品は、順次登録致します。
     p ・栄養素はあくまで例です。<br>　調理方法等によって大幅に異なります。
 
-  javascript:
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-      type: 'radar',
-      data: {
-        labels: ["カロリー", "炭水化物", "タンパク質", "脂質", "食物繊維", "塩分摂取量"],
-        datasets:
-        [
-          {
-            label: "#{@nutrient.how_many}(%)",
-            backgroundColor: 'rgba(102,255,129,0.25)',
-            borderColor: 'rgba(122,255,129,0.25)',
-            data: [#{@nutrient.calorie_ratio}, #{@nutrient.carbohydrate_ratio}, #{@nutrient.protein_ratio}, #{@nutrient.lipid_ratio}, #{@nutrient.dietary_fiber_ratio}, #{@nutrient.salt_equivalent_ratio}]
-          },
-          {
-            label: "40歳女性の１食に必要な栄養(目安)",
-            backgroundColor: 'rgba(240,117,218,0.07)',
-            borderColor: 'rgba(240,117,218,0.07)',
-            data: [100, 100, 100, 100, 100, 100]
-          }
-        ]
-      },
-      options: {
-        scale: {
-          ticks: {
-            min: 0,
-            max: 150,
-            stepSize: 50
-          }
+javascript:
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: ["カロリー", "炭水化物", "タンパク質", "脂質", "食物繊維", "塩分摂取量"],
+      datasets:
+      [
+        {
+          label: "#{@nutrient.how_many}(%)",
+          backgroundColor: 'rgba(102,255,129,0.25)',
+          borderColor: 'rgba(122,255,129,0.25)',
+          data: [#{@nutrient.calorie_ratio}, #{@nutrient.carbohydrate_ratio}, #{@nutrient.protein_ratio}, #{@nutrient.lipid_ratio}, #{@nutrient.dietary_fiber_ratio}, #{@nutrient.salt_equivalent_ratio}]
+        },
+        {
+          label: "40歳女性の１食に必要な栄養(目安)",
+          backgroundColor: 'rgba(240,117,218,0.07)',
+          borderColor: 'rgba(240,117,218,0.07)',
+          data: [100, 100, 100, 100, 100, 100]
+        }
+      ]
+    },
+    options: {
+      scale: {
+        ticks: {
+          min: 0,
+          max: 150,
+          stepSize: 50
         }
       }
-    });
+    }
+  });
