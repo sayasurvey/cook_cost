@@ -209,7 +209,7 @@ th {
 }
 
 #recipe_url {
-  font-size: clamp(3px, 3.3vw, 30px);
+  font-size: clamp(3px, 3.3vw, 17px);
 }
 
 .annotation{
@@ -220,7 +220,7 @@ th {
   }
   p {
     padding: 5px 0px;
-    font-size: 3.3vw;
+    font-size: clamp(3px, 3.3vw, 17px);
   }
 }
 
@@ -279,7 +279,7 @@ th {
 }
 
 .cuisine_name{
-  font-size: clamp(3px, 5vw, 30px);
+  font-size: clamp(3px, 5vw, 15px);
 }
 
 table {

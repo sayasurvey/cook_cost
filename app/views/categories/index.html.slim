@@ -1,7 +1,7 @@
 - content_for(:title, "カテゴリー一覧 | CookCost 〜材料費計算アプリ〜")
 
-.categories_list.m-3
-  h1.text-center.mb-2 カテゴリー一覧
-  - @categories.each do |category|
-    = link_to category.name, category_path(category.id), class: 'col-4 col-sm-4 btn category-btn'
-  
+.container.col-sm-12.px-2
+  .categories_list.m-3
+    h1.text-center.mb-2 カテゴリー一覧
+    - @categories.each do |category|
+      = link_to category.name, category_path(category.id), class: 'col-4 col-sm-4 btn category-btn'

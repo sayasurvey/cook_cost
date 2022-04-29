@@ -1,18 +1,19 @@
 - content_for(:title, "レシピ一覧 | CookCost 〜材料費計算アプリ〜")
 
-.categories_list.mt-3
-  h1.text-center.mb-2 = @category.name
-  - @child_categories.each do |child_category|
-    a.col-4.col-sm-4.btn.category-btn id="#{@category.rakuten_id}-#{child_category.rakuten_id}" onclick = "click_button()" =child_category.name
+.container.col-sm-12.px-2
+  .categories_list.mt-3
+    h1.text-center.mb-2 = @category.name
+    - @child_categories.each do |child_category|
+      a.col-4.col-sm-4.btn.category-btn id="#{@category.rakuten_id}-#{child_category.rakuten_id}" onclick = "click_button()" =child_category.name
 
-.recipe_list
-  ul#recipe_list
+  .recipe_list
+    ul#recipe_list
 
-.credit.text-center.mb-3
-  /! Rakuten Web Services Attribution Snippet FROM HERE
-  a href="https://webservice.rakuten.co.jp/" target="_blank"
-    img alt=("Rakuten Web Service Center") border="0" height="21" src="https://webservice.rakuten.co.jp/img/credit/200709/credit_22121.gif" title=("Rakuten Web Service Center") width="221" /
-  /! Rakuten Web Services Attribution Snippet TO HERE
+  .credit.text-center.mb-3
+    /! Rakuten Web Services Attribution Snippet FROM HERE
+    a href="https://webservice.rakuten.co.jp/" target="_blank"
+      img alt=("Rakuten Web Service Center") border="0" height="21" src="https://webservice.rakuten.co.jp/img/credit/200709/credit_22121.gif" title=("Rakuten Web Service Center") width="221" /
+    /! Rakuten Web Services Attribution Snippet TO HERE
 
 javascript:
   function click_button(e){

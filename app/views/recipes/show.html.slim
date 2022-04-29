@@ -1,30 +1,29 @@
 - content_for(:title, "#{@recipe.cuisine_name} | CookCost 〜材料費計算アプリ〜")
 
-div align='center'
-  = render 'recipes/partial/cost_table'
+.container.col-sm-12.px-2
+  div align='center'
+    = render 'recipes/partial/cost_table'
+    -if logged_in?
+      div id="bookmark_button_#{@recipe.id}" class='bookmark'
+        = render "bookmarks/bookmark", recipe: @recipe
+    = render 'recipes/partial/show_btn'
 
-  -if logged_in?
-    div id="bookmark_button_#{@recipe.id}" class='bookmark'
-      = render "bookmarks/bookmark", recipe: @recipe
-  = render 'recipes/partial/show_btn'
+  = render 'recipes/partial/nutrient_table'
+  canvas.mt-3#myChart style='height: 350px; max-width: 500px;'
 
-= render 'recipes/partial/nutrient_table'
+  .kakomi-tape
+    span.title-tape = '引用元'
+    h3.cuisine_name = @recipe.cuisine_name
+    =link_to "#{@recipe.recipe_url}", @recipe.recipe_url, id: 'recipe_url'
+    p.text-end.mb-2 = "by#{@recipe.originator}"
 
-canvas.mt-3#myChart style='height: 250px;'
-
-.kakomi-tape
-  span.title-tape = '引用元'
-  h3.cuisine_name = @recipe.cuisine_name
-  =link_to "#{@recipe.recipe_url}", @recipe.recipe_url, id: 'recipe_url'
-  p.text-end.mb-2 = "by#{@recipe.originator}"
-
-.annotation.kakomi-tape
-  span.title-tape = '注意'
-  p ・品名に記号やアルファベットが入っているものは、<br>　うまく取得できない場合があります。
-  p ・適量やお好みなど使用量がはっきりしないものは<br>　計算できません。
-  p ・使用量に単位がないものは計算できません。
-  p ・登録がない食品は、順次登録致します。
-  p ・栄養素はあくまで例です。<br>　調理方法等によって大幅に異なります。
+  .annotation.kakomi-tape
+    span.title-tape = '注意'
+    p ・品名に記号やアルファベットが入っているものは、<br>　うまく取得できない場合があります。
+    p ・適量やお好みなど使用量がはっきりしないものは<br>　計算できません。
+    p ・使用量に単位がないものは計算できません。
+    p ・登録がない食品は、順次登録致します。
+    p ・栄養素はあくまで例です。<br>　調理方法等によって大幅に異なります。
 
   javascript:
     var ctx = document.getElementById("myChart");
