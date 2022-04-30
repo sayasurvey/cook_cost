@@ -2,6 +2,8 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show]
   before_action :require_login, only: %i[bookmarks]
 
+  include RakutenRecipeScrapes
+
   # GET /recipes or /recipes.json
   def index
     @q = Recipe.order('recipes.created_at DESC').ransack(params[:q])
