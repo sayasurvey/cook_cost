@@ -14,14 +14,7 @@ class RecipesController < ApplicationController
   def show
     @food_costs = FoodCost.where(recipe_id: params[:id])
                           .joins(price: :ingredient)
-                          .select('ingredients.name,
-                                   prices.purchase_price,
-                                   prices.quantity,
-                                   prices.unit_id,
-                                   food_costs.id,
-                                   food_costs.quantity_unit,
-                                   food_costs.cost,
-                                   food_costs.note')
+                          .select(Constants::SHOW_RECIPES_SELECT_COLUMNS)
                           .order(id: :asc)
     @cost_sum = @food_costs.sum(:cost)
     @nutrient = Nutrient.find_by(recipe_id: params[:id])

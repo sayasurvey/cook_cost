@@ -212,11 +212,9 @@ module RakutenRecipeScrapes
         get_json(location, limit - 1)
       else
         puts [uri.to_s, response.value].join(" : ")
-        # handle error
       end
     rescue => e
       puts [uri.to_s, e.class, e].join(" : ")
-      # handle error
     end
   end
 end
