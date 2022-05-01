@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_14_093452) do
+ActiveRecord::Schema.define(version: 2022_05_01_065900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,22 @@ ActiveRecord::Schema.define(version: 2022_04_14_093452) do
     t.string "note"
     t.index ["price_id"], name: "index_food_costs_on_price_id"
     t.index ["recipe_id"], name: "index_food_costs_on_recipe_id"
+  end
+
+  create_table "ingredient_lists", force: :cascade do |t|
+    t.bigint "ingredient_id", null: false
+    t.bigint "unit_id", null: false
+    t.float "calorie"
+    t.float "carbohydrate"
+    t.float "protein"
+    t.float "lipid"
+    t.float "dietary_fiber"
+    t.float "salt_equivalent"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id", "unit_id"], name: "index_ingredient_lists_on_ingredient_id_and_unit_id", unique: true
+    t.index ["ingredient_id"], name: "index_ingredient_lists_on_ingredient_id"
+    t.index ["unit_id"], name: "index_ingredient_lists_on_unit_id"
   end
 
   create_table "ingredient_units", force: :cascade do |t|
@@ -161,6 +177,8 @@ ActiveRecord::Schema.define(version: 2022_04_14_093452) do
   add_foreign_key "bookmarks", "users"
   add_foreign_key "food_costs", "prices"
   add_foreign_key "food_costs", "recipes"
+  add_foreign_key "ingredient_lists", "ingredients"
+  add_foreign_key "ingredient_lists", "units"
   add_foreign_key "ingredient_units", "ingredients"
   add_foreign_key "ingredient_units", "units"
   add_foreign_key "nutrients", "recipes"

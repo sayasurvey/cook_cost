@@ -77,14 +77,14 @@ module RakutenRecipeScrapes
         @food_cost.assign_attributes(cost: cost, note: '')
         @food_cost.save
 
-        nutrients = get_json("https://apex.oracle.com/pls/apex/foods/get_nutrient/ingredient/#{URI.encode_www_form_component(ingredient)}")["items"][0]
-        unless nutrients == nil
-          calorie += nutrients["calorie"] * amount
-          carbohydrate += nutrients["carbohydrate"] * amount
-          protein += nutrients["protein"] * amount
-          lipid += nutrients["lipid"] * amount
-          dietary_fiber += nutrients["dietary_fiber"] * amount
-          salt_equivalent += nutrients["salt_equivalent"] * amount
+        ingredient_list = IngredientList.includes(:ingredient).find_by(ingredient: { name: ingredient })
+        unless ingredient_list == nil
+          calorie += ingredient_list.calorie * amount
+          carbohydrate += ingredient_list.carbohydrate * amount
+          protein += ingredient_list.protein * amount
+          lipid += ingredient_list.lipid * amount
+          dietary_fiber += ingredient_list.dietary_fiber * amount
+          salt_equivalent += ingredient_list.salt_equivalent * amount
         else
           note = note + ingredient + ','
         end

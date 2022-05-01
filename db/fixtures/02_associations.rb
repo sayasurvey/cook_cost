@@ -45,3 +45,19 @@ csv.each do |child_categories|
     s.rakuten_id = child_categories[3]
   end
 end
+
+csv = CSV.read("#{data_dir}IngredientLists.csv", headers: true)
+
+csv.each do |ingredient_list|
+  IngredientList.seed(:id) do |s|
+    s.id  = ingredient_list[0]
+    s.ingredient = Ingredient.find_by(name: ingredient_list[1])
+    s.unit = Unit.find_by(unit: ingredient_list[2])
+    s.calorie = ingredient_list[3]
+    s.carbohydrate = ingredient_list[4]
+    s.protein = ingredient_list[5]
+    s.lipid = ingredient_list[6]
+    s.dietary_fiber = ingredient_list[7]
+    s.salt_equivalent = ingredient_list[8]
+  end
+end
