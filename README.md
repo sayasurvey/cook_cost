@@ -56,11 +56,10 @@ https://news.careerconnection.jp/pickup/98123/
 
 ## その他
 ・楽天レシピカテゴリ別ランキングAPI  
-・食品成分表API(OracleのAPEXで自作)  
 ・chart.js
 
 # 画面遷移図
 [Figma](https://www.figma.com/file/DEMJHv3GKw0BrKaWAQhvK5/%E3%82%B9%E3%83%9E%E3%83%9B?node-id=2%3A10)
 
 # ER図
-[![Image from Gyazo](https://i.gyazo.com/378a1a9865749ad4db63637b29ca9cf0.png)](https://gyazo.com/378a1a9865749ad4db63637b29ca9cf0)
+[![Image from Gyazo](https://i.gyazo.com/5e322c7796c457e865f41fc8d1d886d0.png)](https://gyazo.com/5e322c7796c457e865f41fc8d1d886d0)
